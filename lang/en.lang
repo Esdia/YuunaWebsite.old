@@ -1,0 +1,15 @@
+{
+  "news": "What's new",
+  "features": "Features",
+  "commands": "Commands",
+  "dashboard": "Dashboard",
+  "about": "About",
+
+  "add": "Invite Yuuna to you server",
+
+  "english": "English",
+  "french": "French",
+
+  "github_bot": "GitHub repository of the bot",
+  "github_website": "GitHub repository of the website"
+}
