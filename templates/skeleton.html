@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='skeleton.css') }}" />
+    {% block links %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <a href="https://discordapp.com/oauth2/authorize?client_id=424560276277559296&scope=bot&permissions=2146958591" id="head_button_link"><button class="invite" id="header_add_to_server">{{ lang['add'] }}</button></a>
+
+        <nav id="main_menu_nav">
+            <ul id="main_menu_ul">
+                <li><a href="news">{{ lang['news'] }}</a></li>
+                <li><a href="features">{{ lang['features'] }}</a></li>
+                <li><a href="commands">{{ lang['commands'] }}</a></li>
+                <li><a href="dashboard">{{ lang['dashboard'] }}</a></li>
+                <li><a href="about">{{ lang['about'] }}</a></li>
+            </ul>
+        </nav>
+
+        <nav id="language">
+            <ul id="language_ul">
+                <li id="english"><a href="set_english">{{ lang['english'] }}</a></li>
+                <li id="french"><a href="set_french">{{ lang['french'] }}</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="content">
+        {% if menu %}
+            <nav id="side_menu">
+                <ul id="side_menu_ul">
+                    {% for link in menu %}
+                        <li><a href={{ menu[link] }}>{{ link }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% endif %}
+
+        <div id="main_div">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </section>
+    <footer>
+        <div id="footer">
+            <a href="https://discordapp.com/oauth2/authorize?client_id=424560276277559296&scope=bot&permissions=2146958591" id="footer_invite_link"><button class="invite" id="footer_add_to_server">{{ lang['add'] }}</button></a>
+            <div id="github">
+                <h3>{{ lang['source_code'] }}</h3>
+                <ul id="github_links">
+                    <li><a href="https://github.com/Esdia/Yuuna">{{ lang['github_bot'] }}</a></li>
+                    <li><a href="https://github.com/Esdia/YuunaWebsite">{{ lang['github_website'] }}</a></li>
+                </ul>
+            </div>
+            <div id="uses">
+                <h3>{{ lang['uses'] }}</h3>
+                <ul id="used_libraries">
+                    <li><a href="https://github.com/Rapptz/discord.py">discord.py</a></li>
+                    <li><a href="https://github.com/aio-libs/aioredis">aioredis</a></li>
+                    <li><a href="http://flask.pocoo.org/">Flask</a></li>
+                    <li><a href="https://www.heroku.com/">Heroku</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

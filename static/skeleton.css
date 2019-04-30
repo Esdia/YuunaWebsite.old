@@ -1,0 +1,152 @@
+body {
+    color: white;
+    background-color: #232328;
+
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+
+    margin: 0;
+    padding: 0;
+}
+
+#content {
+    flex: 1;
+    height: 100%;
+}
+
+header {
+    height: 8vh;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#main_menu_nav {
+    width: 40%;
+    justify-content: space-around;
+}
+
+#main_menu_ul {
+    display:flex;
+    justify-content: space-between;
+}
+
+#head_button_link, #footer_invite_link {
+    margin: 1vh;
+}
+
+.invite:hover {
+    color: #cbcbe6;
+}
+
+#header_add_to_server {
+    height: 100%
+}
+
+#footer_add_to_server {
+    height: 50%;
+}
+
+.invite {
+    width: 100%;
+    color: white;
+    background-color: #3e99a5;
+    border: none;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#language {
+    width: 10%;
+}
+
+#language_ul {
+    margin-right: 1vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1500px) {
+    #language_ul {
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 1000px) {
+    #main_menu_nav {
+        width: 100%;
+    }
+}
+
+li {
+    list-style-type: none;
+}
+
+header ul {
+    height: 100%;
+    margin: 0;
+    padding-top: 1.5vh;
+    align-items: center;
+}
+
+header li {
+    height: 70%;
+    text-align: center;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: #a3a3be;
+}
+
+a:hover {
+    color: #6B6B83;
+}
+
+footer {
+    background-color: #232328;
+    display: flex;
+    justify-content: center;
+}
+
+#footer {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#main_div {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#side_menu {
+    position: fixed;
+    width: 10%;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
+#side_menu_ul {
+    margin: auto;
+    padding: 0;
+
+    transform: translate(-1px, 0);
+}
+
+#side_menu_ul li {
+    border: #5b6868 1px solid;
+    height: 3.5em;
+
+    padding: 0;
+    width: 100%;
+
+    text-align: center;
+    line-height: 3.5em;
+    font-size: 1em;
+
+    margin: 0;
+
+}

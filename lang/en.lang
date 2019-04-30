@@ -5,11 +5,17 @@
   "dashboard": "Dashboard",
   "about": "About",
 
-  "add": "Invite Yuuna to you server",
+  "add": "Invite Yuuna",
 
   "english": "English",
   "french": "French",
 
   "github_bot": "GitHub repository of the bot",
-  "github_website": "GitHub repository of the website"
+  "github_website": "GitHub repository of the website",
+
+  "home_title": "Yuuna - Home",
+  "home_center_text": "A multipurpose discord bot",
+
+  "source_code": "The source code",
+  "uses": "Uses"
 }

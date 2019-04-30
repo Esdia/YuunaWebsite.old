@@ -1,0 +1,15 @@
+{% extends "skeleton.html" %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename="home.css") }}" />
+{% endblock %}
+
+{% block title %}{{ lang['home_title'] }}{% endblock %}
+
+{% block body %}
+    <div id="home_div">
+        <h1>Yuuna</h1>
+        <h2>{{ lang['home_center_text'] }}</h2>
+        <a href="https://discordapp.com/oauth2/authorize?client_id=424560276277559296&scope=bot&permissions=2146958591"><button id="home_add_to_server" class="invite">{{ lang['add'] }}</button></a>
+    </div>
+{% endblock %}

@@ -11,8 +11,10 @@ def index():
             "lang/en.lang"
         ).read()
     )
-    return render_template('index.html', **data)
+
+    return render_template('home.html', lang=data)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.debug = True
+    app.run(host='0.0.0.0', port=5005)
