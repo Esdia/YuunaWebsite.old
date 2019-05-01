@@ -12,7 +12,13 @@
             return false;
         }
 
-        function hideDrop() {
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function hideDrop() {
+            await sleep(1000);
+
             let drop = document.getElementById("dropMenu");
             if (drop.classList.contains("show")) {
                 dropdown();
@@ -36,7 +42,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdownButton" onclick="dropdown()" onblur="hideDrop()">Esdia <i id="arrow"></i></a>
                         <div class="dropMenu" id="dropMenu">
-                            <a onclick="dropdown()" class="dropdowns" href={{ url_for('logout') }}>{{ lang['logout'] }}</a>
+                            <a class="dropdowns" href={{ url_for('logout') }}>{{ lang['logout'] }}</a>
                         </div>
                     </li>
                 {% else %}
