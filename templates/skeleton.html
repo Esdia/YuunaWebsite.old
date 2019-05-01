@@ -12,18 +12,27 @@
 
         <nav id="main_menu_nav">
             <ul id="main_menu_ul">
-                <li><a href="/">{{ lang['home'] }}</a></li>
-                <li><a href="news">{{ lang['news'] }}</a></li>
-                <li><a href="features">{{ lang['features'] }}</a></li>
-                <li><a href="commands">{{ lang['commands'] }}</a></li>
-                <li><a href="dashboard">{{ lang['dashboard'] }}</a></li>
+                <li><a href={{ url_for('home') }}>{{ lang['home'] }}</a></li>
+                <li><a href={{ url_for('features') }}>{{ lang['features'] }}</a></li>
+                <li><a href={{ url_for('commands') }}>{{ lang['commands'] }}</a></li>
+                <li><a href={{ url_for('dashboard') }}>{{ lang['dashboard'] }}</a></li>
+                {% if session['user'] is defined %}
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown">{{ session['user']['username'] }}</a>
+                        <ul>
+                           <li><a href={{ url_for('logout') }}>{{ lang['logout'] }}</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a href={{ url_for('login') }}>{{ lang['login'] }}</a></li>
+                {% endif %}
             </ul>
         </nav>
 
         <nav id="language">
             <ul id="language_ul">
-                <li id="english"><a href="set_en">{{ lang['english'] }}</a></li>
-                <li id="french"><a href="set_fr">{{ lang['french'] }}</a></li>
+                <li id="english"><a href={{ url_for('set_lang', lang="en") }}>{{ lang['english'] }}</a></li>
+                <li id="french"><a href={{ url_for('set_lang', lang="fr") }}>{{ lang['french'] }}</a></li>
             </ul>
         </nav>
     </header>

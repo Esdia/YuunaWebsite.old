@@ -1,9 +1,10 @@
 {
   "home": "Page d'accueil",
-  "news": "Nouveautés",
   "features": "Fonctionnalités",
   "commands": "Commandes",
   "dashboard": "Tableau de bord",
+  "login": "Connexion",
+  "logout": "Déconnexion",
 
   "add": "Inviter Yuuna",
 

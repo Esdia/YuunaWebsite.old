@@ -1,9 +1,10 @@
 {
   "home": "Home",
-  "news": "What's new",
   "features": "Features",
   "commands": "Commands",
   "dashboard": "Dashboard",
+  "login": "Login",
+  "logout": "Logout",
 
   "add": "Invite Yuuna",
 
