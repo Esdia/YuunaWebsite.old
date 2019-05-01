@@ -1,0 +1,21 @@
+{
+  "news": "Nouveautés",
+  "features": "Fonctionnalités",
+  "commands": "Commandes",
+  "dashboard": "Tableau de bord",
+  "about": "À propos",
+
+  "add": "Inviter Yuuna",
+
+  "english": "Anglais",
+  "french": "Français",
+
+  "github_bot": "Dépôt GitHub du bot",
+  "github_website": "Dépôt GitHub du site",
+
+  "home_title": "Yuuna - Page d'accueil",
+  "home_center_text": "Un bot discord polyvalent",
+
+  "source_code": "Le code source",
+  "uses": "Utilise"
+}
