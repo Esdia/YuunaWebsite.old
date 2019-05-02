@@ -44,8 +44,12 @@ header {
     height: 100%
 }
 
-#footer_add_to_server {
+#footer_invite_link {
     height: 50%;
+}
+
+#footer_add_to_server {
+    height: 100%;
 }
 
 .invite {
