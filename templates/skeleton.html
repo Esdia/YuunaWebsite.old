@@ -12,19 +12,17 @@
             return false;
         }
 
-        function hideDrop(event) {
-            if (!event.target.matches(".dropdownButton")) {
-                let drop = document.getElementById("dropMenu");
-                if (drop.classList.contains("show")) {
+        window.onclick = function(event) {
+            if(!event.target.matches('.dropdownButton')) {
+                let isShown = document.getElementById("dropMenu").classList.contains("show");
+                if (isShown) {
                     dropdown();
                 }
             }
-
-            return false;
         }
     </script>
 </head>
-<body onclick="hideDrop(this)">
+<body>
     <header>
         <a href="https://discordapp.com/oauth2/authorize?client_id=424560276277559296&scope=bot&permissions=2146958591" id="head_button_link"><button class="invite" id="header_add_to_server">{{ lang['add'] }}</button></a>
 
