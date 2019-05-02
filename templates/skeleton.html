@@ -34,7 +34,7 @@
                 <li><a href={{ url_for('dashboard') }}>{{ lang['dashboard'] }}</a></li>
                 {% if session['user'] is defined %}
                     <li class="dropdown">
-                        <a href="#" class="dropdownButton" onclick="dropdown()">{{ session['user']['username'] }}<i id="arrow"></i></a>
+                        <a href="#" class="dropdownButton" onclick="dropdown()">{{ session['user']['username'] }}<i class="dropdownButton" id="arrow"></i></a>
                         <div class="dropMenu" id="dropMenu">
                             <a class="dropdowns" href={{ url_for('logout') }}>{{ lang['logout'] }}</a>
                         </div>
