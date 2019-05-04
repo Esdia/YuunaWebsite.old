@@ -1,0 +1,94 @@
+{% extends 'skeleton.html' %}
+
+{% block links %}
+    <link rel="stylesheet" href={{ url_for('static', filename="features.css") }} />
+{% endblock %}
+
+{% block title %}{{ lang['features_title'] }}{% endblock %}
+
+{% block body %}
+    <p>
+        {{ lang['features_intro'] }}
+        <a href={{ url_for('commands') }}>{{ lang['features_intro_link'] }}</a>.
+    </p>
+
+    <div id="conf">
+        <h1 id="h_conf">
+            {{ lang['features_h_conf'] }}
+        </h1>
+        <h2>
+            {{ lang['features_h2_prefix'] }}
+        </h2>
+        <p id="p_prefix">
+            {{ lang['features_p_conf_prefix_1'] }}<span>y!</span>{{ lang['features_p_conf_prefix_2'] }}<span>-></span>{{ lang['features_p_conf_prefix_3'] }}<span>->help</span>{{ lang['features_p_conf_prefix_4'] }}<span>y!help</span>{{ lang['features_p_conf_prefix_5'] }}
+        </p>
+        <h2>
+            {{ lang['features_h2_language'] }}
+        </h2>
+        <p id="p_language">
+            {{ lang['features_p_conf_language_1'] }}<span>Esdia#0313</span>{{ lang['features_p_conf_language_2'] }}
+        </p>
+        <h2>
+            {{ lang['features_h2_disable'] }}
+        </h2>
+        <p id="p_disable">
+            {{ lang['features_p_conf_disable_1'] }}
+        </p>
+        <h2>
+            {{ lang['features_h2_autorole'] }}
+        </h2>
+        <p>
+            {{ lang['features_p_conf_autorole_1'] }}
+        </p>
+    </div>
+    <div id="XP">
+        <h1 id="h_XP">
+            {{ lang['features_h_xp'] }}
+        </h1>
+        <h2>
+            {{ lang['features_h2_xp'] }}
+        </h2>
+        <p>
+            {{ lang['features_p_xp_how_1'] }}
+        </p>
+        <h2>
+            {{ lang['features_h2_conf'] }}
+        </h2>
+        <p>
+            {{ lang['features_p_xp_conf_1'] }}<span>{{ lang['features_p_xp_conf_2'] }}</span>{{ lang['features_p_xp_conf_3'] }}
+        </p>
+    </div>
+    <div id="bank">
+        <h1 id="h_bank">
+            {{ lang['features_h_bank'] }}
+        </h1>
+        <h2>
+            {{ lang['features_h2_bank'] }}
+        </h2>
+        <p>
+            {{ lang['features_p_bank_1'] }}
+        </p>
+        <h2>
+            {{ lang['features_h2_shop'] }}
+        </h2>
+        <p>
+            {{ lang['features_p_shop_1'] }}
+        </p>
+    </div>
+    <div id="games">
+        <h1 id="h_games">
+            {{ lang['features_h_games'] }}
+        </h1>
+        <p>
+            {{ lang['features_p_games_1'] }}
+        </p>
+    </div>
+    <div id="moderation">
+        <h1 id="h_moderation">
+            {{ lang['features_h_moderation'] }}
+        </h1>
+        <p>
+            {{ lang['features_p_moderation_1'] }}
+        </p>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+#main_div h2 {
+    text-align: left;
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
+#main_div p {
+    text-align: justify;
+}
+
+#main_div span {
+    font-weight: bold;
+    color: cadetblue;
+}

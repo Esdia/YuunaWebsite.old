@@ -29,11 +29,12 @@ def get_language():
     )
 
 
-def load(page):
+def load(page, lang=None, menu=None):
     res = make_response(
         render_template(
             "{}.html".format(page),
-            lang=get_language()
+            lang=(get_language() if lang is None else lang),
+            menu=menu
         )
     )
     res.set_cookie('last', page)
@@ -47,8 +48,16 @@ def home():
 
 @app.route('/features')
 def features():
-    # TODO
-    return load('skeleton')
+    lang = get_language()
+    menu = {
+        lang['page.top']: "#",
+        lang['features.config']: "#conf",
+        lang['features.XP']: "#XP",
+        lang['features.bank']: "#bank",
+        lang['features.games']: "#games",
+        lang['features.moderation']: "#moderation"
+    }
+    return load('features', lang=lang, menu=menu)
 
 
 @app.route('/commands')

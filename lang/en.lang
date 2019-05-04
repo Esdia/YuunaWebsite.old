@@ -17,6 +17,56 @@
   "home_title": "Yuuna - Home",
   "home_center_text": "A multipurpose discord bot",
 
+  "page.top": "Page's top",
+
+  "features.config": "Configuration",
+  "features.XP": "Levelling system",
+  "features.bank": "Bank System",
+  "features.games": "Games",
+  "features.moderation": "Moderation",
+
+  "features_title": "Yuuna - Features",
+  "features_intro": "Yuuna comes with some features that will be explained in details here. This page only explains what Yuuna can do, not how to do it. To see the different commands, please refer to the page ",
+  "features_intro_link": "commands",
+
+  "features_h_conf": "The bot configuration",
+  "features_h2_prefix": "The prefix",
+  "features_p_conf_prefix_1": "You can change the prefix of the commands, the default prefix being ",
+  "features_p_conf_prefix_2": ", you can for example set it to ",
+  "features_p_conf_prefix_3": ". You would then have to use for example ",
+  "features_p_conf_prefix_4": " instead of ",
+  "features_p_conf_prefix_5": " to summon the help page.",
+
+  "features_h2_language": "The language",
+  "features_p_conf_language_1": "Yuuna can currently speak two languages : english and french. By default she writes in english, but you can set it to the other language whenever you want. If you happen to know another language and would be willing to teach it to Yuuna, feel free to contact the developer ",
+  "features_p_conf_language_2": " on Discord.",
+
+  "features_h2_disable": "Disable some commands",
+  "features_p_conf_disable_1": "You can disable some commands if you do not want them to be used on your server. Please note that you only disable the commands this way. For example, even if the bank commands are disabled, you will still earn coins when you level up, you just won't be able to see them (the bank and XP features will be detailed just after). You cannot disable sub-commands of a module, meaning that for example you cannot disable the possibility to give money without disabling all the bank related commands.",
+
+  "features_h2_autorole": "The automatic role",
+  "features_p_conf_autorole_1": "You can set a role to be automatically given to any new member joining the server.",
+
+  "features_h_xp": "The levelling system",
+  "features_h2_xp": "How it works",
+  "features_p_xp_how_1": "If the levelling system is enabled, when you send a message in a non banned channel (see bellow) you earn between 10 and 20 xp points. To prevent spam, you can only earn points once a minute. After you reach a certain amount of xp, you will level up and earn 50 Coins (see bellow). You can also configure some roles as rewards : When a member reaches a certain level, they get a role as a reward. It is also possible to get a leaderboard of all the members of the server.",
+  "features_h2_conf": "The configuration",
+  "features_p_xp_conf_1": "You can ban some channels : if a members send a message in a banned channel, they won't get xp points. You can also change the level up message, the default message being : ",
+  "features_p_xp_conf_2": "@member, you leveled up, you are now level X.",
+  "features_p_xp_conf_3": "You can also choose if you want the level up message to be sent or not. The levelling system is disabled by default, and the level up message is enabled by default. No channels are banned by default.",
+
+  "features_h_bank": "The bank system",
+  "features_h2_bank": "How to get money ?",
+  "features_p_bank_1": "You can earn money by levelling up with the levelling system, you earn 50 Coins by level. The server's moderator can also directly modify your account by giving or removing Coins. Like the levelling system, it is possible to get a leaderboard of the richest members of the server.",
+  "features_h2_shop": "What is money used for ?",
+  "features_p_shop_1": "You can keep your money for bragging, but the main use of the Coins is the shop : You can setup a shop for your members to buy roles : how many roles you want, for how many Coins you want.",
+
+  "features_h_games": "The games",
+  "features_p_games_1": "You can play a few games with Yuuna : Black Jack, Chess, Tic tac toe and Connect4. Except for the chess, every game is played with the reaction system instead of the chat. A game of chess will be cancelled after 5 minutes of inactivity, the others will be cancelled after 2 minutes of inactivity. Yuuna can manage one game of a certain game in a channel, if you want to play for example two games of Black Jack at the same time, you have to use two different channels. However, you can play for example a game of Black Jack and a game of Connect4 in the same channel at the same time.",
+
+  "features_h_moderation": "The moderation commands",
+  "features_p_moderation_1": "Yuuna can mute, kick and ban the bad guys, as long as the commands are issued by a moderator. She can also purge some messages for you.",
+
   "source_code": "The source code",
   "uses": "Uses"
 }
