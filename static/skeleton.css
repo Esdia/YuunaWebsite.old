@@ -143,6 +143,7 @@ footer {
 #side_menu_ul li {
     border: #5b6868 1px solid;
     height: 3.5em;
+    min-width: 9em;
     width: 100%;
 
     padding: 0;
