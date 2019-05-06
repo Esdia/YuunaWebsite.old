@@ -238,7 +238,7 @@ def confirm_login():
 @app.route('/logout')
 def logout():
     last = request.cookies.get("last")
-    if last is None:
+    if last is None or "dashboard" in last:
         last = "home"
 
     session.clear()
