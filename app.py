@@ -140,21 +140,16 @@ def commands_module(module):
     )
 
 
-def require_auth(f):
-    @wraps(f)
-    def wrapper(*args, **kwargs):
-        if 'user' not in session:
-            return redirect(
-                url_for('login')
-            )
-        return f(*args, **kwargs)
-    return wrapper
-
-
 @app.route('/dashboard')
-@require_auth
 def dashboard():
     # TODO
+
+    if 'user' not in session:
+        session['last'] = "dashboard"
+        return redirect(
+            url_for('login')
+        )
+
     return load('skeleton')
 
 
@@ -235,7 +230,7 @@ def confirm_login():
     session.permanent = True
     return redirect(
         url_for(
-            last
+            last if 'last' not in session else session['last']
         )
     )
 
