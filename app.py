@@ -22,7 +22,7 @@ def get_language():
 
     return json.load(
         open(
-            "lang/{}.lang".format(
+            "lang/{}.json".format(
                 lang
             )
         )
