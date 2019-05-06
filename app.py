@@ -1,5 +1,6 @@
 import json
 import os
+from functools import wraps
 
 from flask import Flask, render_template, make_response, request, redirect, url_for, session
 from requests_oauthlib import OAuth2Session
@@ -139,15 +140,21 @@ def commands_module(module):
     )
 
 
+def require_auth(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        if 'user' not in session:
+            return redirect(
+                url_for('login')
+            )
+        return f(*args, **kwargs)
+    return wrapper
+
+
 @app.route('/dashboard')
+@require_auth
 def dashboard():
     # TODO
-
-    if 'user' not in session:
-        return redirect(
-            url_for('login')
-        )
-
     return load('skeleton')
 
 
