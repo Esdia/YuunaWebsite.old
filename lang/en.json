@@ -67,6 +67,27 @@
   "features_h_moderation": "The moderation commands",
   "features_p_moderation_1": "Yuuna can mute, kick and ban the bad guys, as long as the commands are issued by a moderator. She can also purge some messages for you.",
 
+  "commands_title": "Yuuna - Commands",
+  "commands_intro": "This page lists all the commands you can use with Yuuna, how to use them and what permissions are needed by the user or by the bot. To see a detailed explanation of how the modules works, please refer to the page ",
+  "commands_intro_link": "features",
+  "commands_intro_2": ". There, the brackets ( [] ) have to be replaced by variables (often numbers), the at ( @ ) means that you have to ping a member and the sharp ( # ) means that you have to ping a channel. Yuuna will often need the 'manage messages' permission to manage the reaction navigation system, or for the games.",
+
+  "commands_module": "Module",
+  "commands_commands": "Command",
+  "commands_description": "Description",
+  "commands_permission_user": "Permissions needed by the user",
+  "commands_permission_bot": "Permissions needed by the bot",
+
+  "commands_all": "All",
+  "commands_staff": "Staff",
+  "commands_non-staff": "Non staff",
+  "commands_misc": "Miscellaneous",
+  "commands_conf": "Configuration",
+  "commands_xp": "Levelling system",
+  "commands_bank": "Bank and shop",
+  "commands_games": "Games",
+  "commands_mod": "Moderation",
+
   "source_code": "The source code",
   "uses": "Uses"
 }

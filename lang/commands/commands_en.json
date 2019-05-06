@@ -1,0 +1,378 @@
+{
+  "command_1": {
+    "module": "Miscellaneous",
+    "module_id": "1",
+    "command": "y!ping",
+    "description": "Show the latency of the bot",
+    "permission_user": "None",
+    "permission_bot": "None"
+  },
+  "command_2": {
+    "module": "Miscellaneous",
+    "module_id": "1",
+    "command": "y!help",
+    "description": "Display the help menu",
+    "permission_user": "None",
+    "permission_bot": "Manage messages"
+  },
+  "command_3": {
+    "module": "Miscellaneous",
+    "module_id": "1",
+    "command": "y!help [module]",
+    "description": "Display the help menu starting from the page of the specified module",
+    "permission_user": "None",
+    "permission_bot": "Manage messages"
+  },
+  "command_4": {
+    "module": "Miscellaneous",
+    "module_id": "1",
+    "command": "y!help [game]",
+    "description": "Show the rules of the specified game",
+    "permission_user": "None",
+    "permission_bot": "Manage messages"
+  },
+  "command_5": {
+    "module": "Miscellaneous",
+    "module_id": "1",
+    "command": "y!autorole",
+    "description": "Display the currently configured autorole",
+    "permission_user": "Manage server",
+    "permission_bot": "Manage roles"
+  },
+  "command_6": {
+    "module": "Miscellaneous",
+    "module_id": "1",
+    "command": "y!autorole set @role",
+    "description": "Set the mentioned role to be the autorole",
+    "permission_user": "Manage server",
+    "permission_bot": "Manage roles"
+  },
+  "command_7": {
+    "module": "Miscellaneous",
+    "module_id": "1",
+    "command": "y!autorole delete",
+    "description": "Delete the autorole (does not delete the actual role, it is just no longer the autorole)",
+    "permission_user": "Manage server",
+    "permission_bot": "Manage roles"
+  },
+  "command_8": {
+    "module": "Configuration",
+    "module_id": "2",
+    "command": "y!prefix",
+    "description": "Show the bot prefix",
+    "permission_user": "None",
+    "permission_bot": "None"
+  },
+  "command_9": {
+    "module": "Configuration",
+    "module_id": "2",
+    "command": "y!prefix [prefix]",
+    "description": "Set the bot prefix to the specified prefix",
+    "permission_user": "Manage server",
+    "permission_bot": "None"
+  },
+  "command_10": {
+    "module": "Configuration",
+    "module_id": "2",
+    "command": "y!language",
+    "description": "Display the bot's language",
+    "permission_user": "Manage server",
+    "permission_bot": "None"
+  },
+  "command_11": {
+    "module": "Configuration",
+    "module_id": "2",
+    "command": "y!language ['en', 'fr']",
+    "description": "Set the bot's language to the specified language",
+    "permission_user": "Manage serveur",
+    "permission_bot": "None"
+  },
+  "command_12": {
+    "module": "Configuration",
+    "module_id": "2",
+    "command": "y!enable [command]",
+    "description": "Enable the specified command (every command are enabled by default)",
+    "permission_user": "Manage server",
+    "permission_bot": "None"
+  },
+  "command_13": {
+    "module": "Configuration",
+    "module_id": "2",
+    "command": "y!disable [command]",
+    "description": "Disable the specified command",
+    "permission_user": "None",
+    "permission_bot": "None"
+  },
+  "command_14": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank",
+    "description": "Display your informations in the levelling system (xp, rank)",
+    "permission_user": "None",
+    "permission_bot": "None"
+  },
+  "command_15": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank @member",
+    "description": "Display the informations of the mentioned member in the levelling system",
+    "permission_user": "None",
+    "permission_bot": "None"
+  },
+  "command_16": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!ranktop",
+    "description": "Display a leaderboard of the members in the levelling system",
+    "permission_user": "None",
+    "permission_bot": "None"
+  },
+  "command_17": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank reset",
+    "description": "Reset the levelling system",
+    "permission_user": "Manage messages",
+    "permission_bot": "None"
+  },
+  "command_18": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank reset @member",
+    "description": "Reset the levelling system only for the mentioned member",
+    "permission_user": "Manage messages",
+    "permission_bot": "None"
+  },
+  "command_19": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank [1-0]",
+    "description": "Enable (1) or disable (0) the levelling system",
+    "permission_user": "Manage messages",
+    "permission_bot": "None"
+  },
+  "command_20": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank ban #channel",
+    "description": "Ban a channel from the levelling system",
+    "permission_user": "Manage messages",
+    "permission_bot": "None"
+  },
+  "command_21": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank unban #channel",
+    "description": "Unban a channel from the levelling system",
+    "permission_user": "Manage messages",
+    "permission_bot": "None"
+  },
+  "command_22": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank message [0-1]",
+    "description": "Enable (1) or disable (0) the level up message",
+    "permission_user": "Manage messages",
+    "permission_bot": "None"
+  },
+  "command_23": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank message set [message]",
+    "description": "Set the level up message to the specified message. Include {Member} in the message to ping the member, and {Level} to send the level in the message.",
+    "permission_user": "Manage messages",
+    "permission_bot": "None"
+  },
+  "command_24": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank message reset",
+    "description": "Set the level up message to the default one",
+    "permission_user": "Manage messages",
+    "permission_bot": "None"
+  },
+  "command_25": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!reward set @role [level]",
+    "description": "Set mentioned role to be a reward for reaching the specified level",
+    "permission_user": "Manage server",
+    "permission_bot": "Manage roles"
+  },
+  "command_26": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!reward delete @role",
+    "description": "The mentioned role is no longer a reward for reaching a level",
+    "permission_user": "Manage server",
+    "permission_bot": "None"
+  },
+  "command_27": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!reward list",
+    "description": "Display a list of all the role rewards",
+    "permission_user": "Manage server",
+    "permission_bot": "None"
+  },
+  "command_28": {
+    "module": "Bank and shop",
+    "module_id": "4",
+    "command": "y!bank",
+    "description": "Show your bank informations",
+    "permission_user": "None",
+    "permission_bot": "None"
+  },
+  "command_29": {
+    "module": "Bank and shop",
+    "module_id": "4",
+    "command": "y!bank @member",
+    "description": "Show the bank information of the mentioned member",
+    "permission_user": "None",
+    "permission_bot": "None"
+  },
+  "command_30": {
+    "module": "Bank and shop",
+    "module_id": "4",
+    "command": "y!banktop",
+    "description": "Display a leaderboard of the richest people of the server",
+    "permission_user": "None",
+    "permission_bot": "None"
+  },
+  "command_31": {
+    "module": "Bank and shop",
+    "module_id": "4",
+    "command": "y!bank pay @member [n]",
+    "description": "Remove n coins to your account, add n coins to the mentioned member's account",
+    "permission_user": "None",
+    "permission_bot": "None"
+  },
+  "command_32": {
+    "module": "Bank and shop",
+    "module_id": "4",
+    "command": "y!bank add @member [n]",
+    "description": "Add n coins to the mentioned member's account",
+    "permission_user": "Manage messages",
+    "permission_bot": "None"
+  },
+  "command_33": {
+    "module": "Bank and shop",
+    "module_id": "4",
+    "command": "y!bank remove @member [n]",
+    "description": "Remove n coins from the mentioned member's account",
+    "permission_user": "Manage messages",
+    "permission_bot": "None"
+  },
+  "command_34": {
+    "module": "Bank and shop",
+    "module_id": "4",
+    "command": "y!bank set @member [n]",
+    "description": "Set the mentioned member's account to n coins",
+    "permission_user": "Manage messages",
+    "permission_bot": "None"
+  },
+  "command_35": {
+    "module": "Bank and shop",
+    "module_id": "4",
+    "command": "y!shop",
+    "description": "Display the shop",
+    "permission_user": "None",
+    "permission_bot": "Manage messages, manage roles"
+  },
+  "command_36": {
+    "module": "Bank and shop",
+    "module_id": "4",
+    "command": "y!shop add @role [price]",
+    "description": "Add a role to the shop",
+    "permission_user": "Manage roles",
+    "permission_bot": "None"
+  },
+  "command_37": {
+    "module": "Bank and shop",
+    "module_id": "4",
+    "command": "y!shop remove @role",
+    "description": "Remove a role from the shop",
+    "permission_user": "Manage roles",
+    "permission_bot": "None"
+  },
+  "command_38": {
+    "module": "Bank and shop",
+    "module_id": "4",
+    "command": "y!shop set @role [price]",
+    "description": "Change a role's price in the shop",
+    "permission_user": "Manage roles",
+    "permission_bot": "None"
+  },
+  "command_39": {
+    "module": "Games",
+    "module_id": "5",
+    "command": "y!tic-tac-toe (alias : y!ttt)",
+    "description": "Launch a game of tic-tac-toe",
+    "permission_user": "None",
+    "permission_bot": "Manage messages"
+  },
+  "command_40": {
+    "module": "Games",
+    "module_id": "5",
+    "command": "y!connect4",
+    "description": "Launch a game of Connect4",
+    "permission_user": "None",
+    "permission_bot": "Manage messages"
+  },
+  "command_41": {
+    "module": "Games",
+    "module_id": "5",
+    "command": "y!blackjack (alias : y!bj)",
+    "description": "Launch a game of Black Jack",
+    "permission_user": "None",
+    "permission_bot": "Manage messages"
+  },
+  "command_42": {
+    "module": "Games",
+    "module_id": "5",
+    "command": "y!chess",
+    "description": "Launch a game of Chess",
+    "permission_user": "None",
+    "permission_bot": "Manage messages"
+  },
+  "command_43": {
+    "module": "Moderation",
+    "module_id": "6",
+    "command": "y!purge [n]",
+    "description": "Delete the n last messages in the channel the command has been typed in",
+    "permission_user": "Manage messages",
+    "permission_bot": "Manage messages"
+  },
+  "command_44": {
+    "module": "Moderation",
+    "module_id": "6",
+    "command": "y!mute @member",
+    "description": "Mute the mentioned member",
+    "permission_user": "Manage messages",
+    "permission_bot": "Manage channels"
+  },
+  "command_45": {
+    "module": "Moderation",
+    "module_id": "6",
+    "command": "y!unmute @member",
+    "description": "Unmute the mentioned member",
+    "permission_user": "Manage messages",
+    "permission_bot": "Manage channels"
+  },
+  "command_46": {
+    "module": "Moderation",
+    "module_id": "6",
+    "command": "y!kick @member",
+    "description": "Kick the mentioned member from the server",
+    "permission_user": "Kick members",
+    "permission_bot": "Kick members"
+  },
+  "command_47": {
+    "module": "Moderation",
+    "module_id": "6",
+    "command": "y!ban @member",
+    "description": "Ban the mentioned member from the server",
+    "permission_user": "Ban members",
+    "permission_bot": "Ban members"
+  }
+}

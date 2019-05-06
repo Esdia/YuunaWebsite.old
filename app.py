@@ -29,12 +29,13 @@ def get_language():
     )
 
 
-def load(page, lang=None, menu=None):
+def load(page, lang=None, menu=None, command_list=None):
     res = make_response(
         render_template(
             "{}.html".format(page),
             lang=(get_language() if lang is None else lang),
-            menu=menu
+            menu=menu,
+            command_list=command_list
         )
     )
     res.set_cookie('last', page)
@@ -60,10 +61,83 @@ def features():
     return load('features', lang=lang, menu=menu)
 
 
+def get_command(command_json, command):
+    return {
+        "module": command_json[command]['module'],
+        "module_id": command_json[command]['module_id'],
+        "command": command_json[command]['command'],
+        "description": command_json[command]["description"],
+        "permission_user": command_json[command]['permission_user'],
+        "permission_bot": command_json[command]['permission_bot']
+    }
+
+
 @app.route('/commands')
 def commands():
-    # TODO
-    return load('skeleton')
+    command_list = []
+    if 'module' in session:
+        module = session['module']
+    else:
+        module = "all"
+
+    lang = request.cookies.get('language')
+    lang = "en" if lang is None else lang
+    command_json = json.load(
+        open(
+            "lang/commands/commands_{}.json".format(
+                lang
+            )
+        )
+    )
+    lang_data = get_language()
+    if module == "staff":
+        for command in command_json:
+            cmd = get_command(command_json, command)
+            if cmd["permission_user"] != "None":
+                command_list.append(
+                    cmd
+                )
+    elif module == "non-staff":
+        for command in command_json:
+            cmd = get_command(command_json, command)
+            if cmd['permission_user'] == "None":
+                command_list.append(
+                    cmd
+                )
+    elif module == "all":
+        for command in command_json:
+            command_list.append(
+                get_command(command_json, command)
+            )
+    else:
+        for command in command_json:
+            cmd = get_command(command_json, command)
+            if cmd['module_id'] == str(module):
+                command_list.append(
+                    cmd
+                )
+
+    menu = {
+        lang_data['commands_all']: "/commands_all",
+        lang_data['commands_staff']: "/commands_staff",
+        lang_data['commands_non-staff']: "/commands_non-staff",
+        lang_data['commands_misc']: "/commands_1",
+        lang_data['commands_conf']: "/commands_2",
+        lang_data['commands_xp']: "/commands_3",
+        lang_data['commands_bank']: "/commands_4",
+        lang_data['commands_games']: "/commands_5",
+        lang_data['commands_mod']: "/commands_6"
+    }
+
+    return load('commands', lang=lang_data, menu=menu, command_list=command_list)
+
+
+@app.route('/commands_<module>')
+def commands_module(module):
+    session['module'] = module
+    return redirect(
+        url_for('commands')
+    )
 
 
 @app.route('/dashboard')
@@ -181,7 +255,7 @@ def set_lang(lang):
             )
         )
     )
-    res.set_cookie('language', lang, max_age=60*60*24*365)
+    res.set_cookie('language', lang, max_age=60 * 60 * 24 * 365)
     return res
 
 

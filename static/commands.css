@@ -1,0 +1,37 @@
+#main_div {
+    width: 70%;
+}
+
+@media screen and (min-width: 83em) {
+    #tables {
+        display: table;
+        margin-left: 50%;
+        transform: translate(-50%);
+    }
+}
+@media screen and (max-width: 83em) {
+    #main_div {
+    }
+}
+
+
+#tables table tr {
+    height: 100px;
+}
+
+.in_table {
+    border-collapse: collapse;
+}
+.in_table td, .in_table th {
+    border: #5b6868 1px solid;
+}
+
+#modules, #perm_user, #perm_bot {
+    width: 11em;
+}
+#commands {
+    width: 15em;
+}
+#description {
+    width: 35em;
+}
