@@ -142,6 +142,12 @@ def commands_module(module):
 @app.route('/dashboard')
 def dashboard():
     # TODO
+
+    if 'user' not in session:
+        return redirect(
+            url_for('login')
+        )
+
     return load('skeleton')
 
 
