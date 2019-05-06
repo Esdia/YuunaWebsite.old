@@ -54,6 +54,8 @@ header {
 
 .invite {
     width: 100%;
+    padding: 10px;
+
     color: white;
     background-color: #3e99a5;
     border: none;

@@ -70,13 +70,9 @@
   "commands_title": "Yuuna - Commands",
   "commands_intro": "This page lists all the commands you can use with Yuuna, how to use them and what permissions are needed by the user or by the bot. To see a detailed explanation of how the modules works, please refer to the page ",
   "commands_intro_link": "features",
-  "commands_intro_2": ". There, the brackets ( [] ) have to be replaced by variables (often numbers), the at ( @ ) means that you have to ping a member and the sharp ( # ) means that you have to ping a channel. Yuuna will often need the 'manage messages' permission to manage the reaction navigation system, or for the games.",
+  "commands_intro_2": ". There, the brackets ( [] ) have to be replaced by variables (often numbers), the at ( @ ) means that you have to ping a member and the sharp ( # ) means that you have to ping a channel. Yuuna needs the permissions 'manage messages', 'manage roles' and 'manage channels' to work correctly. For the moderation commands, Yuuna also needs the permissions 'kick and ban members'.",
 
-  "commands_module": "Module",
-  "commands_commands": "Command",
-  "commands_description": "Description",
-  "commands_permission_user": "Permissions needed by the user",
-  "commands_permission_bot": "Permissions needed by the bot",
+  "commands_perm": "Permission required",
 
   "commands_all": "All",
   "commands_staff": "Staff",

@@ -1,37 +1,17 @@
-#main_div {
-    width: 70%;
-}
-
-@media screen and (min-width: 83em) {
-    #tables {
-        display: table;
-        margin-left: 50%;
-        transform: translate(-50%);
-    }
-}
-@media screen and (max-width: 83em) {
-    #main_div {
-    }
-}
-
-
-#tables table tr {
-    height: 100px;
-}
-
-.in_table {
-    border-collapse: collapse;
-}
-.in_table td, .in_table th {
+.cmd {
     border: #5b6868 1px solid;
 }
 
-#modules, #perm_user, #perm_bot {
-    width: 11em;
+#main_div span {
+    font-weight: bold;
+    color: cadetblue;
 }
-#commands {
-    width: 15em;
+
+.perm {
+    display: flex;
+    justify-content: space-around;
 }
-#description {
-    width: 35em;
+.perm p {
+    background-color: #6d8f85;
+    padding: 15px;
 }

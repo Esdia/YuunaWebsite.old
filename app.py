@@ -67,8 +67,7 @@ def get_command(command_json, command):
         "module_id": command_json[command]['module_id'],
         "command": command_json[command]['command'],
         "description": command_json[command]["description"],
-        "permission_user": command_json[command]['permission_user'],
-        "permission_bot": command_json[command]['permission_bot']
+        "perm": command_json[command]['perm'],
     }
 
 
@@ -93,14 +92,14 @@ def commands():
     if module == "staff":
         for command in command_json:
             cmd = get_command(command_json, command)
-            if cmd["permission_user"] != "None":
+            if cmd["perm"] != "None":
                 command_list.append(
                     cmd
                 )
     elif module == "non-staff":
         for command in command_json:
             cmd = get_command(command_json, command)
-            if cmd['permission_user'] == "None":
+            if cmd['perm'] == "None":
                 command_list.append(
                     cmd
                 )

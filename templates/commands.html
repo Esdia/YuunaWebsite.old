@@ -13,69 +13,20 @@
         {{ lang['commands_intro_2'] }}
     </p>
     {% if command_list %}
-        <table id="tables">
-            <tr>
-                <td>
-                    <table class="in_table" id="modules">
-                        <tr>
-                            <th><p>{{ lang['commands_module'] }}</p></th>
-                        </tr>
-                        {% for command in command_list %}
-                            <tr>
-                                <td><p>{{ command['module'] }}</p></td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </td>
-                <td>
-                    <table class="in_table" id="commands">
-                        <tr>
-                            <th><p>{{ lang['commands_commands'] }}</p></th>
-                        </tr>
-                            {% for command in command_list %}
-                                <tr>
-                                    <td><p>{{ command['command'] }}</p></td>
-                                </tr>
-                            {% endfor %}
-                    </table>
-                </td>
-                <td>
-                    <table class="in_table" id="description">
-                        <tr>
-                            <th><p>{{ lang['commands_description'] }}</p></th>
-                        </tr>
-                            {% for command in command_list %}
-                                <tr>
-                                    <td><p>{{ command['description'] }}</p></td>
-                                </tr>
-                            {% endfor %}
-                    </table>
-                </td>
-                <td>
-                    <table class="in_table" id="perm_user">
-                        <tr>
-                            <th><p>{{ lang['commands_permission_user'] }}</p></th>
-                        </tr>
-                            {% for command in command_list %}
-                                <tr>
-                                    <td><p>{{ command['permission_user'] }}</p></td>
-                                </tr>
-                            {% endfor %}
-                    </table>
-                </td>
-                <td>
-                    <table class="in_table" id="perm_bot">
-                        <tr>
-                            <th><p>{{ lang['commands_permission_bot'] }}</p></th>
-                        </tr>
-                            {% for command in command_list %}
-                                <tr>
-                                    <td><p>{{ command['permission_bot'] }}</p></td>
-                                </tr>
-                            {% endfor %}
-                    </table>
-                </td>
-            </tr>
-        </table>
+        {% for command in command_list %}
+            <div class="cmd">
+                <h1>{{ command['module'] }} : <span>{{ command['command'] }}</span></h1>
+                <p>
+                    {{ command['description'] }}
+                </p>
+                {% if command['perm'] != "None" %}
+                    <div class="perm">
+                        <p>
+                            {{ lang['commands_perm'] }} : <strong>{{ command['perm'] }}</strong>
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
     {% endif %}
 {% endblock %}
