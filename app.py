@@ -152,7 +152,7 @@ def dashboard():
         )
 
     guilds = get_managed_guilds(
-        session['guilds']
+        get_guilds()
     )
 
     return load('dashboard', lang=get_language(), guilds=guilds)
@@ -191,8 +191,8 @@ def get_user(discord_token):
     return user
 
 
-def get_guilds(discord_token):
-    discord_session = make_session(token=discord_token)
+def get_guilds():
+    discord_session = make_session(state=session['oauth2_state'])
 
     try:
         req = discord_session.get('https://discordapp.com/api/users/@me/guilds')
@@ -201,7 +201,7 @@ def get_guilds(discord_token):
 
     print(req.json())
 
-    session['guilds'] = req.json()
+    return req.json()
 
 
 def get_managed_guilds(guilds):
@@ -249,7 +249,6 @@ def confirm_login():
             )
         )
     user = get_user(discord_token)
-    get_guilds(discord_token)
     if not user:
         return redirect(
             url_for(
