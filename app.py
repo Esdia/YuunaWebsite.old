@@ -200,7 +200,7 @@ def get_guilds(discord_token):
 
 def get_managed_guilds(guilds):
     return [
-        g for g in guilds if g['owner'] is True or (int(g['permissions']) >> 0x20) == 1
+        g for g in guilds if g['owner'] is True or (int(g['permissions']) & 0x20) != 0
     ]
 
 
