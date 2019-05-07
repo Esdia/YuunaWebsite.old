@@ -193,9 +193,15 @@ def get_user(discord_token):
 
 def get_guilds():
     discord_session = make_session(state=session['oauth2_state'])
+    discord_token = discord_session.fetch_token(
+        TOKEN_URL,
+        client_secret=CLIENT_SECRET,
+        authorization_response=request.url
+    )
+    discord_session_2 = make_session(token=discord_token)
 
     try:
-        req = discord_session.get('https://discordapp.com/api/users/@me/guilds')
+        req = discord_session_2.get('https://discordapp.com/api/users/@me/guilds')
     except Exception:
         return None
 
