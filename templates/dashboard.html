@@ -8,12 +8,15 @@
 
 {% block body %}
     {% if not guilds %}
-        <p id="no-guild">{{ lang['dashboard_no-guild'] }}</p>
+        <p id="no-guild">
+            {{ lang['dashboard_no-guild'] }}<br />
+            {{ lang['dashboard_no-guild_2'] }}<span>{{ lang['dashboard_no-guild_3'] }}</span>{{ lang['dashboard_no-guild_4'] }}
+        </p>
     {% else %}
         {% for g in guilds %}
             <div class="guild">
                 <img src="https://discordapp.com/api/guilds/{{ g['id'] }}/icons/{{ g['icon'] }}.jpg" alt="{{ g['name'] }}" />
-                <p><a href={{ url_for('dashboard_id', id=g['id']) }} >{{ g['name'] }}</a></p>
+                <p><a href={{ url_for('dashboard_id', guild_id=g['id']) }} >{{ g['name'] }}</a></p>
             </div>
         {% endfor %}
     {% endif %}

@@ -154,8 +154,8 @@ def dashboard():
     return load('dashboard', lang=get_language(), guilds=guilds)
 
 
-@app.route('/dashboard_<id>')
-def dashboard_server(id):
+@app.route('/dashboard_<guild_id>')
+def dashboard_server(guild_id):
     pass
 
 

@@ -84,6 +84,12 @@
   "commands_games": "Games",
   "commands_mod": "Moderation",
 
+  "dashboard_title": "Yuuna - Dashboard",
+  "dashboard_no-guild": "Sorry, it seems that you have no server in which you have enough permissions to configure Yuuna :c",
+  "dashboard_no-guild_2": "You need the permission ",
+  "dashboard_no-guild_3": "manage server",
+  "dashboard_no-guild_4": " to access the server's dashboard.",
+
   "source_code": "The source code",
   "uses": "Uses"
 }

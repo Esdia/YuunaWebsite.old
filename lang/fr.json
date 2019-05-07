@@ -84,6 +84,12 @@
   "commands_games": "Jeux",
   "commands_mod": "Modération",
 
+  "dashboard_title": "Yuuna - Tableau de bord",
+  "dashboard_no-guild": "Désolé, il semble que vous n'ayez aucun serveur dans lequel vous avez suffisamment de permissions pour y configurer Yuuna :c",
+  "dashboard_no-guild_2": "Vous avez besoin de la permission ",
+  "dashboard_no-guild_3": "gérer le serveur",
+  "dashboard_no-guild_4": " pour avoir accès au tableau de bord du serveur",
+
   "source_code": "Le code source",
   "uses": "Utilise"
 }
