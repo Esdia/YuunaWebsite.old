@@ -206,7 +206,7 @@ def get_guilds():
 
 def get_managed_guilds(guilds):
     return [
-        guilds[g] for g in guilds if g['owner'] is True or (int(g['permissions']) & 0x20) != 0
+        guilds[g] for g in guilds if guilds[g]['owner'] is True or (int(guilds[g]['permissions']) & 0x20) != 0
     ]
 
 
