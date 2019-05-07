@@ -254,6 +254,10 @@ def confirm_login():
         )
 
     session.permanent = True
+    print('last' in session)
+    print(last)
+    if last in session:
+        print(session['last'])
     return redirect(
         url_for(
             last if 'last' not in session else session['last']
