@@ -37,6 +37,9 @@ def load(page, **kwargs):
         )
     )
     res.set_cookie('last', page)
+
+    if 'last' in session:
+        del session['last']
     return res
 
 
