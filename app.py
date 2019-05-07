@@ -198,15 +198,12 @@ def get_guilds(discord_token):
     except Exception:
         return None
 
-    print(req.json())
-
     return req.json()
 
 
 def get_managed_guilds(guilds):
     guilds_list = []
     for g in guilds:
-        print(g)
         if g['owner'] is True or (int(g['permissions']) & 0x20) != 0:
             guilds_list.append(g)
     return guilds_list
