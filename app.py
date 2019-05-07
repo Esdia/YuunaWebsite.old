@@ -145,14 +145,13 @@ def dashboard():
     # TODO
 
     if 'user' not in session:
-        print('OFZAOZAVOZHVOZJAVIAEVEIVERIJVOERBJREJBORBONREV EPLV?EPONB?OTNBOTN')
         session['last'] = "dashboard"
         return redirect(
             url_for('login')
         )
 
     guilds = get_managed_guilds(
-        get_guilds()
+        get_guilds(session['token'])
     )
 
     return load('dashboard', lang=get_language(), guilds=guilds)
@@ -191,17 +190,11 @@ def get_user(discord_token):
     return user
 
 
-def get_guilds():
-    discord_session = make_session(state=session['oauth2_state'])
-    discord_token = discord_session.fetch_token(
-        TOKEN_URL,
-        client_secret=CLIENT_SECRET,
-        authorization_response=request.url
-    )
-    discord_session_2 = make_session(token=discord_token)
+def get_guilds(discord_token):
+    discord_session = make_session(token=discord_token)
 
     try:
-        req = discord_session_2.get('https://discordapp.com/api/users/@me/guilds')
+        req = discord_session.get('https://discordapp.com/api/users/@me/guilds')
     except Exception:
         return None
 
@@ -265,11 +258,8 @@ def confirm_login():
             )
         )
 
+    session['token'] = discord_token
     session.permanent = True
-    print('last' in session)
-    print(last)
-    if last in session:
-        print(session['last'])
     return redirect(
         url_for(
             last if 'last' not in session else session['last']
