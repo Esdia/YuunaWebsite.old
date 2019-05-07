@@ -2,3 +2,40 @@
     font-weight: bold;
     color: cadetblue;
 }
+
+.guild img {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+
+    padding: 15px
+}
+
+.guild {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.guild_in {
+    display: flex;
+    flex-direction: row;
+
+    /*border: #5b6868 1px solid;*/
+    padding: 5px;
+
+    width: 460px;
+}
+
+.guild_p {
+    padding: 15px;
+    display: table;
+    height: 128px;
+    width: 256px;
+}
+
+.guild p {
+    display: table-cell;
+    vertical-align: middle;
+}

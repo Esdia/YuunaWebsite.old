@@ -15,8 +15,16 @@
     {% else %}
         {% for g in guilds %}
             <div class="guild">
-                <img src="https://cdn.discordapp.com/icons/{{ g['id'] }}/{{ g['icon'] }}.png" alt="{{ g['name'] }}" />
-                <p><a href={{ url_for('dashboard_server', guild_id=g['id']) }} >{{ g['name'] }}</a></p>
+                <div class="guild_in">
+                    {% if g['icon'] %}
+                        <img src="https://cdn.discordapp.com/icons/{{ g['id'] }}/{{ g['icon'] }}.png" alt="{{ g['name'] }}" />
+                    {% else %}
+                        <img src="https://discordapp.com/assets/dd4dbc0016779df1378e7812eabaa04d.png" alt="{{ g['name'] }}"/>
+                    {% endif %}
+                    <div class="guild_p">
+                        <p><a href={{ url_for('dashboard_server', guild_id=g['id']) }} >{{ g['name'] }}</a></p>
+                    </div>
+                </div>
             </div>
         {% endfor %}
     {% endif %}
