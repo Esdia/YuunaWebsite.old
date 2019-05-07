@@ -1,6 +1,5 @@
 import json
 import os
-from functools import wraps
 
 from flask import Flask, render_template, make_response, request, redirect, url_for, session
 from requests_oauthlib import OAuth2Session
@@ -30,13 +29,11 @@ def get_language():
     )
 
 
-def load(page, lang=None, menu=None, command_list=None):
+def load(page, **kwargs):
     res = make_response(
         render_template(
             "{}.html".format(page),
-            lang=(get_language() if lang is None else lang),
-            menu=menu,
-            command_list=command_list
+            **kwargs
         )
     )
     res.set_cookie('last', page)
@@ -45,7 +42,7 @@ def load(page, lang=None, menu=None, command_list=None):
 
 @app.route('/')
 def home():
-    return load('home')
+    return load('home', lang=get_language())
 
 
 @app.route('/features')
@@ -150,7 +147,16 @@ def dashboard():
             url_for('login')
         )
 
-    return load('skeleton')
+    guilds = get_managed_guilds(
+        session['guilds']
+    )
+
+    return load('dashboard', lang=get_language(), guilds=guilds)
+
+
+@app.route('/dashboard_<id>')
+def dashboard_server(id):
+    pass
 
 
 def make_session(token=None, state=None, scope=None):
@@ -179,6 +185,23 @@ def get_user(discord_token):
     user = req.json()
     session['user'] = user
     return user
+
+
+def get_guilds(discord_token):
+    discord_session = make_session(token=discord_token)
+
+    try:
+        req = discord_session.get('https://discordapp.com/api/users/@me/guilds')
+    except Exception:
+        return None
+
+    session['guilds'] = req.json()
+
+
+def get_managed_guilds(guilds):
+    return [
+        g for g in guilds if g['owner'] is True or (int(g['permissions']) >> 0x20) == 1
+    ]
 
 
 @app.route('/login')
@@ -220,6 +243,7 @@ def confirm_login():
             )
         )
     user = get_user(discord_token)
+    get_guilds(discord_token)
     if not user:
         return redirect(
             url_for(
