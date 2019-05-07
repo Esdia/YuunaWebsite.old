@@ -195,6 +195,8 @@ def get_guilds(discord_token):
     except Exception:
         return None
 
+    print(req.json())
+
     session['guilds'] = req.json()
 
 
