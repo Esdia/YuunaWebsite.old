@@ -142,6 +142,7 @@ def dashboard():
     # TODO
 
     if 'user' not in session:
+        print('OFZAOZAVOZHVOZJAVIAEVEIVERIJVOERBJREJBORBONREV EPLV?EPONB?OTNBOTN')
         session['last'] = "dashboard"
         return redirect(
             url_for('login')
