@@ -171,6 +171,16 @@ def dash_test():
 
 @app.route('/dashboard_<guild_id>')
 def dashboard_server(guild_id):
+    # We check if the user is allowed to access this page
+    guilds = get_managed_guilds(
+        get_guilds(session['token'])
+    )
+    if not any(g[id] == guild_id for g in guilds):
+        return redirect(
+            url_for('dash_test')
+        )
+
+    # TODO
     pass
 
 

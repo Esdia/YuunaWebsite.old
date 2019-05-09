@@ -9,7 +9,9 @@
 {% block body %}
     <p>
         {{ lang['features_intro'] }}
-        <a href={{ url_for('commands') }}>{{ lang['features_intro_link'] }}</a>.
+        <a href={{ url_for('commands') }}>{{ lang['features_intro_link'] }}</a>
+        {{ lang['features_intro_2'] }}
+        <a href={{ url_for('dashboard') }}>{{ lang['features_intro_link_2'] }}</a>
     </p>
 
     <div id="conf">
@@ -37,8 +39,14 @@
         <h2>
             {{ lang['features_h2_autorole'] }}
         </h2>
-        <p>
+        <p id="autorole">
             {{ lang['features_p_conf_autorole_1'] }}
+        </p>
+        <h2>
+            {{ lang['features_h2_bot_master'] }}
+        </h2>
+        <p id="bot_master">
+            {{ lang['features_p_conf_bot_master'] }}
         </p>
     </div>
     <div id="XP">

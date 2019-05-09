@@ -28,6 +28,8 @@
   "features_title": "Yuuna - Features",
   "features_intro": "Yuuna comes with some features that will be explained in details here. This page only explains what Yuuna can do, not how to do it. To see the different commands, please refer to the page ",
   "features_intro_link": "commands",
+  "features_intro_2": ". You can configure everything with the commands, but you can also do it from the page ",
+  "features_intro_link_2": "dashboard",
 
   "features_h_conf": "The bot configuration",
   "features_h2_prefix": "The prefix",
@@ -47,13 +49,16 @@
   "features_h2_autorole": "The automatic role",
   "features_p_conf_autorole_1": "You can set a role to be automatically given to any new member joining the server.",
 
+  "features_h2_bot_master": "The bot master role",
+  "features_p_conf_bot_master": "You can set a role to be the bot master. A member with this role can bypass Yuuna's permission checking, meaning that they can use every Yuuna command except for the moderation commands.",
+
   "features_h_xp": "The levelling system",
   "features_h2_xp": "How it works",
   "features_p_xp_how_1": "If the levelling system is enabled, when you send a message in a non banned channel (see bellow) you earn between 10 and 20 xp points. To prevent spam, you can only earn points once a minute. After you reach a certain amount of xp, you will level up and earn 50 Coins (see bellow). You can also configure some roles as rewards : When a member reaches a certain level, they get a role as a reward. It is also possible to get a leaderboard of all the members of the server.",
   "features_h2_conf": "The configuration",
-  "features_p_xp_conf_1": "You can ban some channels : if a members send a message in a banned channel, they won't get xp points. You can also change the level up message, the default message being : ",
+  "features_p_xp_conf_1": "You can ban some channels and some roles : if a members send a message in a banned channel or if they have a banned role, they won't get xp points. You can also change the level up message, the default message being : ",
   "features_p_xp_conf_2": "@member, you leveled up, you are now level X.",
-  "features_p_xp_conf_3": "You can also choose if you want the level up message to be sent or not. The levelling system is disabled by default, and the level up message is enabled by default. No channels are banned by default.",
+  "features_p_xp_conf_3": "You can also choose if you want the level up message to be sent or not, or if you want it to be sent in private or not. You can change the anti-spam delay and the bank reward for levelling up. The levelling system is disabled by default, and the level up message is enabled by default. No channels are banned by default.",
 
   "features_h_bank": "The bank system",
   "features_h2_bank": "How to get money ?",

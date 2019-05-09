@@ -28,6 +28,8 @@
   "features_title": "Yuuna - Fonctionnalités",
   "features_intro": "Yuuna est dotée de plusieurs fonctionnalités qui seront détaillées ici. Cette page ne sert qu'à expliquer ce que Yuuna peut faire, pas comment le faire. Pour voir une liste des différentes commandes, veuillez vous referer à la page ",
   "features_intro_link": "commandes",
+  "features_intro_2": ". Vous pouvez tout configurer via les commandes, mais vous pouvez aussi le faire depuis la page ",
+  "features_intro_link_2": "tableau de bord",
 
   "features_h_conf": "La configuration du bot",
   "features_h2_prefix": "Le préfixe",
@@ -47,13 +49,16 @@
   "features_h2_autorole": "Le rôle automatique",
   "features_p_conf_autorole_1": "Vous pouvez configurer un rôle pour qu'il soit automatiquement donné à quiconque rejoint le serveur.",
 
+  "features_h2_bot_master": "Le rôle maître du bot",
+  "features_p_conf_bot_master": "Vous pouvez configurer un rôle pour qu'il soit maître du bot. Un membre qui possède ce rôle passera outre les vérifications de permissions de Yuuna, ils pourront donc utiliser toutes les commandes, à l'exception des commandes de modération.",
+
   "features_h_xp": "Le système d'XP",
   "features_h2_xp": "Comment ça marche",
   "features_p_xp_how_1": "Si le système d'XP est activé, quand vous envoyez un message dans un salon non-banni (voir plus bas), vous gagnez entre 10 et 20 points d'expérience. Pour empêcher le spam, vous ne pouvez gagner des points qu'une fois par minute. Quand vous atteignez un certain nombre de points d'XP, vous montez de niveau et gagnez 50 Coins (voir plus bas). Vous pouvez aussi configurer des rôles comme récompense : Quand un membre atteint un certain niveau, il obtient un rôle en récompense. Il est aussi possible d'obtenir un classement des membres du serveur par leurs points d'expérience.",
   "features_h2_conf": "La configuration",
-  "features_p_xp_conf_1": "Vous pouvez bannir certains salons ; si un membre parle dans un salon banni, il ne gagnera pas d'expérience. Vous pouvez aussi changer le message de changement de niveau, le message par défaut étant : ",
+  "features_p_xp_conf_1": "Vous pouvez bannir certains salons ou certains rôles; si un membre parle dans un salon banni, ou s'il possède un rôle banni, il ne gagnera pas d'expérience. Vous pouvez aussi changer le message de changement de niveau, le message par défaut étant : ",
   "features_p_xp_conf_2": "@membre, vous êtes maintenant niveau X.",
-  "features_p_xp_conf_3": "Vous pouvez aussi choisir si vous voulez que le message de changement de niveau soit affiché ou pas. Le système d'XP est désactivé par défaut, and le message de changement de niveau est activé par défaut. Aucun salon n'est banni par défaut.",
+  "features_p_xp_conf_3": "Vous pouvez aussi choisir si vous voulez que le message de changement de niveau soit affiché ou pas, ou si vous voulez qu'il soit envoyé en privé ou non. Vous pouvez changer le délai de l'anti-spam, ou encore le nombre de Coins gagnés en montant de niveau. Le système d'XP est désactivé par défaut, and le message de changement de niveau est activé par défaut. Aucun salon n'est banni par défaut.",
 
   "features_h_bank": "La banque",
   "features_h2_bank": "Comment obtenir de l'argent ?",
