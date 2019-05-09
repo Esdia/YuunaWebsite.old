@@ -75,7 +75,9 @@
   "commands_title": "Yuuna - Commandes",
   "commands_intro": "Cette page liste toutes les commandes que vous pouvez utiliser avec Yuuna, comment les utiliser et de quelles permissions vous et le bot avez besoin. Pour avoir une explication détaillée sur le fonctionnement des modules, veuillez vous referer à la page ",
   "commands_intro_link": "fonctionnalités",
-  "commands_intro_2": ". Ici, les crochets ( [] ) doivent être remplacés par une variable (souvent un nombre). Les arobases ( @ ) signifient que vous devez mentionner un membre et les dièses ( # ) signifient que vous devez mentionner un salon. Yuuna a besoin des permissions 'gérer les messages', 'gérer les rôles' et 'gérer les salons' pour fonctionner correctement. Pour les commandes de modération, Yuuna a également besoin des permissions 'expulser et bannir les membres'.",
+  "commands_intro_2": ". Vous pouvez tout configurer via les commandes, mais vous pouvez aussi le faire depuis la page ",
+  "commands_intro_link_2": "tableau de bord",
+  "commands_intro_3": ". Ici, les crochets ( [] ) doivent être remplacés par une variable (souvent un nombre). Les arobases ( @ ) signifient que vous devez mentionner un membre et les dièses ( # ) signifient que vous devez mentionner un salon. Yuuna a besoin des permissions 'gérer les messages', 'gérer les rôles' et 'gérer les salons' pour fonctionner correctement. Pour les commandes de modération, Yuuna a également besoin des permissions 'expulser et bannir les membres'.",
 
   "commands_perm": "Permission requise",
 

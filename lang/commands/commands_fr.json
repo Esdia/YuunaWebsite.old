@@ -65,263 +65,326 @@
   "command_10": {
     "module": "Configuration",
     "module_id": "2",
-    "command": "y!language",
-    "description": "Affiche le langage du bot",
-    "perm": "Gérer le serveur"
-  },
-  "command_11": {
-    "module": "Configuration",
-    "module_id": "2",
     "command": "y!language ['en', 'fr']",
     "description": "Change le langage du bot",
     "perm": "Gérer le serveur"
   },
-  "command_12": {
+  "command_11": {
     "module": "Configuration",
     "module_id": "2",
     "command": "y!enable [command]",
     "description": "Active la commande spécifiée (toutes les commandes sont activées par défaut)",
     "perm": "Gérer le serveur"
   },
-  "command_13": {
+  "command_12": {
     "module": "Configuration",
     "module_id": "2",
     "command": "y!disable [command]",
     "description": "Désactive la commande spécifiée",
-    "perm": "Aucune"
+    "perm": "Gérer le serveur"
+  },
+  "command_13": {
+    "module": "Configuration",
+    "module_id": "2",
+    "command": "y!master",
+    "description": "Affiche l'actuel rôle maître du bot",
+    "perm": "Gérer le serveur"
   },
   "command_14": {
+    "module": "Configuration",
+    "module_id": "2",
+    "command": "y!master set @role",
+    "description": "Configure le rôle maître du bot",
+    "perm": "Gérer le serveur"
+  },
+  "command_15": {
+    "module": "Configuration",
+    "module_id": "2",
+    "command": "y!master delete",
+    "description": "Supprime le rôle maître du bot",
+    "perm": "Gérer le serveur"
+  },
+  "command_16": {
+    "module": "Configuration",
+    "module_id": "2",
+    "command": "y!confirm [0-1]",
+    "description": "Active (1) ou désactive (0) la fonctionnalité 'confirmation' (Yuuna demande une confirmation si vous exécutez une commande dangereuse)",
+    "perm": "Gérer le serveur"
+  },
+  "command_17": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!rank",
     "description": "Affiche vos informations dans le système d'xp (points d'xp, rang)",
     "perm": "Aucune"
   },
-  "command_15": {
+  "command_18": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!rank @member",
     "description": "Affiche les informations du membre mentionné dans le système d'XP",
     "perm": "Aucune"
   },
-  "command_16": {
+  "command_19": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!ranktop",
     "description": "Affiche un classement des membres dans le système d'XP",
     "perm": "Aucune"
   },
-  "command_17": {
+  "command_20": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!rank reset",
     "description": "Réinitialise le système d'XP",
     "perm": "Gérer les messages"
   },
-  "command_18": {
+  "command_21": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!rank reset @member",
     "description": "Réinitialise le système d'XP uniquement pour le membre mentionné",
     "perm": "Gérer les messages"
   },
-  "command_19": {
+  "command_22": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!rank [1-0]",
     "description": "Active (1) ou désactive (0) le système d'XP",
     "perm": "Gérer les messages"
   },
-  "command_20": {
+  "command_23": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!rank ban #channel",
     "description": "Bannis un salon du système d'XP",
     "perm": "Gérer les messages"
   },
-  "command_21": {
+  "command_24": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!rank unban #channel",
     "description": "Débannis un salon du système d'XP",
     "perm": "Gérer les messages"
   },
-  "command_22": {
+  "command_25": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank ban @role",
+    "description": "Bannis un rôle du système d'XP",
+    "perm": "Gérer les messages"
+  },
+  "command_26": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank unban @role",
+    "description": "Bannis un rôle du système d'XP",
+    "perm": "Gérer les messages"
+  },
+  "command_27": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!rank message [0-1]",
     "description": "Active (1) ou désactive (0) le message de montée de niveau",
     "perm": "Gérer les messages"
   },
-  "command_23": {
+  "command_28": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!rank message set [message]",
-    "description": "Modifie le message de montée de niveau. Ajoutez {Player} dans le message pour mentionner le membre, et {Level} pour ajouter le niveau au message.",
+    "description": "Modifie le message de montée de niveau. Ajoutez {player} dans le message pour mentionner le membre, et {level} pour ajouter le niveau au message.",
     "perm": "Gérer les messages"
   },
-  "command_24": {
+  "command_29": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!rank message reset",
     "description": "Réinitialise le message de montée de niveau",
     "perm": "Gérer les messages"
   },
-  "command_25": {
+  "command_30": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank message private",
+    "description": "Dis à Yuuna d'envoyer le message de montée de niveau en privé",
+    "perm": "Gérer les messages"
+  },
+  "command_31": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank message nonprivate",
+    "description": "Dis à Yuuna d'envoyer le message de montée de niveau dans le salon actuel",
+    "perm": "Gérer les messages"
+  },
+  "command_32": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank antispam [delay in seconds]",
+    "description": "Change le délai de l'anti-spam (le mettre à zéro désactiverait l'anti-spam)",
+    "perm": "Gérer les messages"
+  },
+  "command_33": {
+    "module": "Levelling system",
+    "module_id": "3",
+    "command": "y!rank bankreward [reward]",
+    "description": "Change le nombre de Coins que vous gagnerez en montant de niveau",
+    "perm": "Gérer les messages"
+  },
+  "command_34": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!reward set @role [level]",
     "description": "Configure le role mentionné comme récompense pour avoir atteint le niveau spécifié",
     "perm": "Gérer le serveur"
   },
-  "command_26": {
+  "command_35": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!reward delete @role",
     "description": "Le role mentionné n'est plus une récompense du système d'XP",
     "perm": "Gérer le serveur"
   },
-  "command_27": {
+  "command_36": {
     "module": "Système d'XP",
     "module_id": "3",
     "command": "y!reward list",
     "description": "Affiche une liste des roles récompenses",
     "perm": "Gérer le serveur"
   },
-  "command_28": {
+  "command_37": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!bank",
     "description": "Affiche vos informations bancaires",
     "perm": "Aucune"
   },
-  "command_29": {
+  "command_38": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!bank @member",
     "description": "Affiche les informations bancaires du membre mentionné",
     "perm": "Aucune"
   },
-  "command_30": {
+  "command_39": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!banktop",
     "description": "Affiche une classement des membres les plus riches du serveur",
     "perm": "Aucune"
   },
-  "command_31": {
+  "command_40": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!bank pay @member [n]",
     "description": "Retire n Coins à votre compte, et ajoute n Coins au compte du membre mentionné",
     "perm": "Aucune"
   },
-  "command_32": {
+  "command_41": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!bank add @member [n]",
     "description": "Ajoute n Coins au compte du membre mentionné",
     "perm": "Gérer les messages"
   },
-  "command_33": {
+  "command_42": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!bank remove @member [n]",
     "description": "Retire n Coins au compte du membre mentionné",
     "perm": "Gérer les messages"
   },
-  "command_34": {
+  "command_43": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!bank set @member [n]",
     "description": "Fixe le compte du membre mentionné à n Coins",
     "perm": "Gérer les messages"
   },
-  "command_35": {
+  "command_44": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!shop",
     "description": "Affiche la boutique",
     "perm": "Aucune"
   },
-  "command_36": {
+  "command_45": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!shop add @role [price]",
     "description": "Ajoute un role à la boutique",
     "perm": "Gérer les rôles"
   },
-  "command_37": {
+  "command_46": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!shop remove @role",
     "description": "Retire un role de la boutique",
     "perm": "Gérer les rôles"
   },
-  "command_38": {
+  "command_47": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!shop set @role [price]",
     "description": "Change le prix d'un role dans la boutique",
     "perm": "Gérer les rôles"
   },
-  "command_39": {
+  "command_48": {
     "module": "Jeux",
     "module_id": "5",
     "command": "y!morpion",
     "description": "Démarre une partie de morpion",
     "perm": "Aucune"
   },
-  "command_40": {
+  "command_49": {
     "module": "Jeux",
     "module_id": "5",
     "command": "y!connect4",
     "description": "Démarre une partie de puissance 4",
     "perm": "Aucune"
   },
-  "command_41": {
+  "command_50": {
     "module": "Jeux",
     "module_id": "5",
     "command": "y!blackjack (alias : y!bj)",
     "description": "Démarre une partie Black Jack",
     "perm": "Aucune"
   },
-  "command_42": {
+  "command_51": {
     "module": "Jeux",
     "module_id": "5",
     "command": "y!chess",
     "description": "Démarre une partie d'Échecs",
     "perm": "Aucune"
   },
-  "command_43": {
+  "command_52": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!purge [n]",
     "description": "Supprime les n derniers messages du salon dans lequel la commande a été tapée",
     "perm": "Gérer les messages"
   },
-  "command_44": {
+  "command_53": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!mute @member",
     "description": "Rend le membre mentionné muet",
     "perm": "Gérer les messages"
   },
-  "command_45": {
+  "command_54": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!unmute @member",
     "description": "Rend la parole au membre mentionné",
     "perm": "Gérer les messages"
   },
-  "command_46": {
+  "command_55": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!kick @member",
     "description": "Expulse le membre mentionné du serveur",
     "perm": "Kick members"
   },
-  "command_47": {
+  "command_56": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!ban @member",

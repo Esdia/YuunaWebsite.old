@@ -11,6 +11,8 @@
         {{ lang['commands_intro'] }}
         <a href={{ url_for('features') }}>{{ lang['commands_intro_link'] }}</a>
         {{ lang['commands_intro_2'] }}
+        <a href={{ url_for('dashboard') }}>{{ lang['commands_intro_link_2'] }}</a>
+        {{ lang['commands_intro_3'] }}
     </p>
     {% if command_list %}
         {% for command in command_list %}
