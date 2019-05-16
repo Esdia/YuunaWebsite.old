@@ -208,6 +208,7 @@ def dashboard_server(guild_id):
         )
 
     guild = req.json()
+    print(guild)
     key = guild_id + ":"
     lang = get_language()
 
