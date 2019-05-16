@@ -190,7 +190,12 @@ def dashboard_server(guild_id):
     guilds = get_managed_guilds(
         get_guilds(session['token'])
     )
-    if not any(g['id'] == guild_id for g in guilds):
+    ok = False
+    for g in guilds:
+        print(g['id'] + " : " + guild_id)
+        if g['id'] == guild_id:
+            ok = True
+    if ok:
         return redirect(
             url_for('dashboard')
         )
