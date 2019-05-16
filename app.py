@@ -11,6 +11,7 @@ REDIRECT_URI = os.environ.get('SITE_URL') + "confirm_login"
 CLIENT_ID = os.environ.get('CLIENT_ID')
 CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
 TOKEN_URL = os.environ.get('TOKEN_URL')
+TOKEN = os.environ.get("TOKEN")
 AUTH_URL = os.environ.get('AUTH_URL')
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
@@ -195,7 +196,7 @@ def dashboard_server(guild_id):
         )
 
     # We fetch the guild
-    discord_session = make_session(token=session["token"])
+    discord_session = make_session(token=TOKEN)
     try:
         req = discord_session.get(
             "https://discordapp.com/api/guilds/{}".format(
@@ -318,7 +319,7 @@ def dashboard_server(guild_id):
 
 def get_channels(guild_id):
     # We fetch the guild
-    discord_session = make_session(token=session["token"])
+    discord_session = make_session(token=TOKEN)
     try:
         req = discord_session.get(
             "https://discordapp.com/api/guilds/{}/channels".format(
