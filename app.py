@@ -1,11 +1,9 @@
-import asyncio
+import redis
 import json
 import os
 
 from flask import Flask, render_template, make_response, redirect, url_for, session, request
 from requests_oauthlib import OAuth2Session
-
-import script.storage as storage
 
 app = Flask(__name__)
 
@@ -16,6 +14,8 @@ TOKEN_URL = os.environ.get('TOKEN_URL')
 AUTH_URL = os.environ.get('AUTH_URL')
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+
+db = None
 
 
 def get_language():
@@ -208,7 +208,6 @@ def dashboard_server(guild_id):
 
     guild = req.json()
     key = guild_id + ":"
-    db = storage.database
     lang = get_language()
 
     _id = guild_id
@@ -370,13 +369,13 @@ def get_roles(guild):
 
 def get_role_rewards(guild):
     guild_id = guild['id']
-    levels = storage.database.get(guild_id + ":levels:rewards")
+    levels = db.get(guild_id + ":levels:rewards")
     if levels is None:
         return None
 
     roles = []
     for l in levels:
-        ids = storage.database.smembers(guild_id + ":levels:reward:" + l)
+        ids = db.smembers(guild_id + ":levels:reward:" + l)
         for _id in ids:
             r = get_role(_id, guild)
             if r is not None:
@@ -419,7 +418,7 @@ def form_prefix():
         post = "y!"
     _id = str(request.args.get('_id', 0))
 
-    storage.database.set(
+    db.set(
         _id + ":prefix",
         post
     )
@@ -433,7 +432,7 @@ def form_language():
     post = str(request.args.get('post', 0))
     _id = str(request.args.get('_id', 0))
 
-    storage.database.set(
+    db.set(
         _id + ":language",
         post
     )
@@ -447,12 +446,12 @@ def form_disable():
     post = request.args.getlist('post')
     _id = str(request.args.get('_id', 0))
 
-    storage.database.delete(
+    db.delete(
         _id + ":disabled_commands"
     )
 
     for command in post:
-        storage.database.sadd(
+        db.sadd(
             _id + ":disabled_commands",
             command
         )
@@ -466,7 +465,7 @@ def form_autorole():
     post = request.args.get('post', 0)
     _id = str(request.args.get('_id', 0))
 
-    storage.database.set(
+    db.set(
         _id + ":autorole",
         post
     )
@@ -480,7 +479,7 @@ def form_bot_master():
     post = request.args.get('post', 0)
     _id = str(request.args.get('_id', 0))
 
-    storage.database.set(
+    db.set(
         _id + ":language",
         post
     )
@@ -494,11 +493,11 @@ def form_confirm():
     post = request.args.get('post', 0)
     _id = str(request.args.get('_id', 0))
     if post == "true":
-        storage.database.delete(
+        db.delete(
             _id + ":ignore_confirm"
         )
     else:
-        storage.database.set(
+        db.set(
             _id + ":ignore_confirm",
             1
         )
@@ -513,11 +512,11 @@ def form_levels():
     post = request.args.get('post', 0)
     _id = str(request.args.get('_id', 0))
     if post == "true":
-        storage.database.delete(
+        db.delete(
             _id + ":level_enabled"
         )
     else:
-        storage.database.set(
+        db.set(
             _id + ":level_enabled",
             1
         )
@@ -532,12 +531,12 @@ def form_ban_channels():
     post = request.args.getlist('post')
     _id = str(request.args.get('_id', 0))
 
-    storage.database.delete(
+    db.delete(
         _id + ":levels:banned_channels"
     )
 
     for channel_id in post:
-        storage.database.sadd(
+        db.sadd(
             _id + ":levels:banned_channels",
             channel_id
         )
@@ -551,12 +550,12 @@ def form_ban_roles():
     post = request.args.getlist('post')
     _id = str(request.args.get('_id', 0))
 
-    storage.database.delete(
+    db.delete(
         _id + ":levels:banned_roles"
     )
 
     for role_id in post:
-        storage.database.sadd(
+        db.sadd(
             _id + ":levels:banned_roles",
             role_id
         )
@@ -571,11 +570,11 @@ def form_message():
     _id = str(request.args.get('_id', 0))
 
     if post == "":
-        storage.database.delete(
+        db.delete(
             "levels:message"
         )
     else:
-        storage.database.set(
+        db.set(
             "levels:message",
             post
         )
@@ -590,11 +589,11 @@ def form_sent():
     post = request.args.get('post', 0)
     _id = str(request.args.get('_id', 0))
     if post == "true":
-        storage.database.delete(
+        db.delete(
             _id + ":levels:message_disabled"
         )
     else:
-        storage.database.set(
+        db.set(
             _id + ":levels:message_disabled",
             1
         )
@@ -609,11 +608,11 @@ def form_private():
     post = request.args.get('post', 0)
     _id = str(request.args.get('_id', 0))
     if post == "true":
-        storage.database.delete(
+        db.delete(
             _id + ":levels:message:private"
         )
     else:
-        storage.database.set(
+        db.set(
             _id + ":levels:message:private",
             1
         )
@@ -630,7 +629,7 @@ def form_antispam():
         post = "60"
     _id = str(request.args.get('_id', 0))
 
-    storage.database.set(
+    db.set(
         _id + ":xp_antispam",
         post
     )
@@ -646,7 +645,7 @@ def form_bankreward():
         post = "50"
     _id = str(request.args.get('_id', 0))
 
-    storage.database.set(
+    db.set(
         _id + ":levels:bank_reward",
         post
     )
@@ -659,25 +658,25 @@ def form_role_reward():
     post = request.args.getlist('post')
     _id = str(request.args.get('_id', 0))
 
-    levels = storage.database.smembers(
+    levels = db.smembers(
         _id + ":levels:rewards"
     )
-    storage.database.delete(
+    db.delete(
         _id + ":levels:rewards"
     )
 
     for l in levels:
-        storage.database.delete(
+        db.delete(
             _id + ":levels:reward:" + l
         )
 
     for reward in post:
         r = reward.split(",")
-        storage.database.sadd(
+        db.sadd(
             _id + ":levels:rewards",
             r[1]
         )
-        storage.database.sadd(
+        db.sadd(
             _id + ":levels:reward:" + str(r[1]),
             r[0]
         )
@@ -821,7 +820,8 @@ def set_lang(lang):
 
 
 if __name__ == '__main__':
-    asyncio.get_event_loop().create_task(storage.refresh_redis())
+    redis_url = os.environ.get("REDIS_URL")
+    db = redis.Redis.from_url(redis_url, decode_responses=True)
 
     app.debug = True
     app.run(host='0.0.0.0', port=5005)
