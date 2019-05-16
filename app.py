@@ -820,6 +820,8 @@ def set_lang(lang):
 
 
 if __name__ == '__main__':
+    global db
+
     redis_url = os.environ.get("REDIS_URL")
     db = redis.Redis.from_url(redis_url, decode_responses=True)
 
