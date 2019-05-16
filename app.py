@@ -205,6 +205,7 @@ def dashboard_server(guild_id):
             )
         )
     except Exception:
+        print(Exception)
         print("ERROR : No permission to access this page : redirecting to /dashboard")
         return redirect(
             url_for('dashboard')
