@@ -1,6 +1,7 @@
 import redis
 import json
 import os
+import requests
 
 from flask import Flask, render_template, make_response, redirect, url_for, session, request
 from requests_oauthlib import OAuth2Session
@@ -197,15 +198,14 @@ def dashboard_server(guild_id):
         )
 
     # We fetch the guild
-    discord_session = make_session(token=session['token'])
-    try:
-        req = discord_session.get(
-            "https://discordapp.com/api/guilds/{}".format(
-                guild_id
-            )
-        )
-    except Exception:
-        print(Exception.__traceback__)
+    headers = {'Authorization': 'Bot ' + TOKEN}
+    req = requests.get(
+        "https://discordapp.com/api/guilds/{}".format(
+            guild_id
+        ),
+        headers=headers
+    )
+    if req.status_code != 200:
         print("ERROR : No permission to access this page : redirecting to /dashboard")
         return redirect(
             url_for('dashboard')
@@ -322,14 +322,15 @@ def dashboard_server(guild_id):
 
 def get_channels(guild_id):
     # We fetch the guild
-    discord_session = make_session(token=session['token'])
-    try:
-        req = discord_session.get(
-            "https://discordapp.com/api/guilds/{}/channels".format(
-                guild_id
-            )
-        )
-    except Exception:
+    headers = {'Authorization': 'Bot ' + TOKEN}
+    req = requests.get(
+        "https://discordapp.com/api/guilds/{}/channels".format(
+            guild_id
+        ),
+        headers=headers
+    )
+    if req.status_code != 200:
+        print("ERROR : No permission to access this : redirecting to /dashboard")
         return redirect(
             url_for('dashboard')
         )
