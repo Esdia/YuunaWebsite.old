@@ -183,8 +183,8 @@
             </div>
         </div>
         <div class="selected_div" id="ban_roles_selected">
-            {% for c in infos['roles'] %}
-                <button class="selected ban_roles_selected" value="{{ r['id'] }}" {% if r['id'] in infos['ban_roles'] %} style="display: flex" {% endif %} style="border: 1px solid {{ r['color'] }}">{{ c['name'] }}<img src="/static/image/delete_button.png" alt="delete" class="delete_button ban_roles_delete_button" onclick="unselect(this.parentElement, 'ban_roles')" ></button>
+            {% for r in infos['roles'] %}
+                <button class="selected ban_roles_selected" value="{{ r['id'] }}" {% if r['id'] in infos['ban_roles'] %} style="display: flex" {% endif %} style="border: 1px solid {{ r['color'] }}">{{ r['name'] }}<img src="/static/image/delete_button.png" alt="delete" class="delete_button ban_roles_delete_button" onclick="unselect(this.parentElement, 'ban_roles')" ></button>
             {% endfor %}
         </div>
         <div class="button_div">
