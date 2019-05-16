@@ -1,0 +1,310 @@
+{% extends 'skeleton.html' %}
+
+{% block links %}
+    <link rel="stylesheet" href={{ url_for('static', filename="dashboard_server.css") }} />
+{% endblock %}
+
+{% block title %}{{ lang['dashboard_title'] }}{% endblock %}
+
+{% block body %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="{{ url_for('static', filename='forms.js') }}"></script>
+
+    <script>
+        make_defaults({{ infos }});
+    </script>
+
+    <div class="form" id="prefix_div">
+        <div class="form_in">
+            <div>
+                <label for="prefix">{{ lang["form.prefix"] }}</label>
+                <input spellcheck="false" maxlength="32" value={{ infos['prefix'] }} placeholder="y!" name="prefix" id="prefix" />
+            </div>
+        </div>
+        <div class="button_div">
+            <button id="prefix_button" onclick="send_prefix()">{{ lang['form.submit'] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="language_div">
+        <div class="form_in">
+            <div>
+                <label for="language_select">{{ lang["form.language"] }}</label>
+                <select name="language" id="language_select">
+                    {% for l in infos['language_list'] %}
+                        <option value={{ l['value'] }} {% if 'default' in l %} selected {% endif %}>{{ lang['form.' + l['name']] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="button_div">
+            <button id="language_selected_button" onclick="send_language()">{{ lang['form.submit'] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="disable_div">
+        <div class="form_in" id="disable_drop">
+            <p>{{ lang['form.disable'] }}</p>
+            <button onclick="drop('disable')" class="drop_button" id="drop_disable_button">
+                {{ lang['form.add'] }}
+                <img src="/static/image/plus_button.png" alt="plus_button" id="disable_plus_button" />
+            </button>
+            <div id="disable_choices_div" class="disable_choices_div choices_drop">
+                {% for c in infos['command_list'] %}
+                    <button onclick="select(this, 'disable')" class="choice_disable" value="{{ c }}" {% if c in infos['disable'] %} style="display: none" {% endif %}>{{ infos['prefix']+c }}</button>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="selected_div" id="disable_selected">
+            {% for c in infos['command_list'] %}
+                <button class="selected disable_selected" value="{{ c }}" {% if c in infos['disable'] %} style="display: flex" {% endif %}>{{ infos['prefix']+c }}<img src="/static/image/delete_button.png" alt="delete" class="delete_button disable_delete_button" onclick="unselect(this.parentElement, 'disable')" ></button>
+            {% endfor %}
+        </div>
+        <div class="button_div">
+            <button id="disable_button" onclick="send_disable()">{{ lang["form.submit"] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="autorole_div">
+        <div class="form_in">
+            <div>
+                <label for="autorole">{{ lang["form.autorole"] }}</label>
+                <select name="autorole" id="autorole">
+                    <option value="None">{{ lang["form.none"] }}</option>
+                    {% for r in infos['roles'] %}
+                        <option value="{{ r['id'] }}" {% if r['id'] == infos['autorole']['id'] %} selected {% endif %}>{{ r['name'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="button_div">
+            <button id="autorole_button" onclick="send_autorole()">{{ lang['form.submit'] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="bot_master_div">
+        <div class="form_in">
+            <div>
+                <label for="bot_master">{{ lang["form.bot_master"] }}</label>
+                <select name="bot_master" id="bot_master" >
+                    <option value="None">{{ lang["form.none"] }}</option>
+                    {% for r in infos['roles'] %}
+                        <option value="{{ r['id'] }}" {% if r['id'] == infos['bot_master']['id'] %} selected {% endif %}>{{ r['name'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="button_div">
+           <button id="bot_master_button" onclick="send_bot_master()">{{ lang['form.submit'] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="confirm_div">
+        <div class="form_in">
+            <div>
+                <label for="confirm">{{ lang["form.confirm"] }}</label>
+                <label class="switch">
+                    <input type="checkbox" id="confirm" {% if not infos['ignore_confirm'] %} checked {% endif %}/>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="button_div">
+            <button id="ignore_confirm_button" onclick="send_confirm()">{{ lang["form.submit"] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="levels_div">
+        <div class="form_in">
+            <div>
+                <label for="levels">{{ lang["form.levels"] }}</label>
+                <label class="switch">
+                    <input type="checkbox" id="levels" {% if infos['levels'] %} checked {% endif %} />
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="button_div">
+            <button id="levels_button" onclick="send_levels()">{{ lang["form.submit"] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="ban_channels_div">
+        <div class="form_in" id="ban_channels_drop">
+            <p>{{ lang['form.ban_channels'] }}</p>
+            <button onclick="drop('ban_channels')" class="drop_button" id="drop_ban_channels_button">
+                {{ lang['form.add'] }}
+                <img src="/static/image/plus_button.png" alt="plus_button" id="ban_channels_plus_button" />
+            </button>
+            <div id="ban_channels_choices_div" class="ban_channels_choices_div choices_drop">
+                {% for c in infos['channels'] %}
+                    <button onclick="select(this, 'ban_channels')" class="choice_ban_channels" value="{{ c['id'] }}" {% if c['id'] in infos['ban_channels'] %} style="display: none" {% endif %}>{{ c['name'] }}</button>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="selected_div" id="ban_channels_selected">
+            {% for c in infos['channels'] %}
+                <button class="selected ban_channels_selected" value="{{ c['id'] }}" {% if c['id'] in infos['ban_channels'] %} style="display: flex" {% endif %}>{{ c['name'] }}<img src="/static/image/delete_button.png" alt="delete" class="delete_button ban_channels_delete_button" onclick="unselect(this.parentElement, 'ban_channels')" ></button>
+            {% endfor %}
+        </div>
+        <div class="button_div">
+            <button id="ban_channels_button" onclick="send_ban_channels()">{{ lang["form.submit"] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="ban_roles_div">
+        <div class="form_in" id="ban_roles_drop">
+            <p>{{ lang['form.ban_roles'] }}</p>
+            <button onclick="drop('ban_roles')" class="drop_button" id="drop_ban_roles_button">
+                {{ lang['form.add'] }}
+                <img src="/static/image/plus_button.png" alt="plus_button" id="ban_roles_plus_button" />
+            </button>
+            <div id="ban_roles_choices_div" class="ban_roles_choices_div choices_drop">
+                {% for r in infos['roles'] %}
+                    <button onclick="select(this, 'ban_roles')" class="choice_ban_roles" value="{{ r['id'] }}" {% if r['id'] in infos['ban_roles'] %} style="display: none" {% endif %}>{{ r['name'] }}</button>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="selected_div" id="ban_roles_selected">
+            {% for c in infos['roles'] %}
+                <button class="selected ban_roles_selected" value="{{ r['id'] }}" {% if r['id'] in infos['ban_roles'] %} style="display: flex" {% endif %} style="border: 1px solid {{ r['color'] }}">{{ c['name'] }}<img src="/static/image/delete_button.png" alt="delete" class="delete_button ban_roles_delete_button" onclick="unselect(this.parentElement, 'ban_roles')" ></button>
+            {% endfor %}
+        </div>
+        <div class="button_div">
+            <button id="ban_roles_button" onclick="send_ban_roles()">{{ lang["form.submit"] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="level_up_message_div">
+        <div class="form_in">
+            <div>
+                <label for="level_up_message">{{ lang['form.level_up_message'] }}</label>
+                <textarea spellcheck="false" name="level_up_message" id="level_up_message" maxlength="2000" placeholder="{{ lang["level_up_default_message"] }}">{{ infos['message'] }}</textarea>
+            </div>
+        </div>
+        <div class="button_div">
+            <button id="message_button" onclick="send_level_up_message()">{{ lang["form.submit"] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="message_sent_div">
+        <div class="form_in">
+            <div>
+                <label for="message_sent">{{ lang["form.message_sent"] }}</label>
+                <label class="switch">
+                    <input type="checkbox" id="message_sent" {% if infos['message_sent'] %} checked {% endif %}/>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="button_div">
+            <button id="message_sent_button" onclick="send_message_sent()">{{ lang["form.submit"] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="message_private_div">
+        <div class="form_in">
+            <div>
+                <label for="message_private">{{ lang["form.message_private"] }}</label>
+                <label class="switch">
+                    <input type="checkbox" id="message_private" {% if infos['message_private'] %} checked {% endif %}/>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="button_div">
+            <button id="message_private_button" onclick="send_message_private()">{{ lang["form.submit"] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="antispam_div">
+        <div class="form_in">
+            <div>
+                <label for="antispam">{{ lang["form.antispam"] }}</label>
+                <input type="number" id="antispam" value="{{ infos['antispam'] }}">
+            </div>
+        </div>
+        <div class="button_div">
+            <button id="antispam_button" onclick="send_antispam()">{{ lang["form.submit"] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="bankreward_div">
+        <div class="form_in">
+            <div>
+                <label for="bankreward">{{ lang["form.bankreward"] }}</label>
+                <input type="number" id="bankreward" value="{{ infos['bankreward'] }}">
+            </div>
+        </div>
+        <div class="button_div">
+            <button id="bankreward_button" onclick="send_bankreward()">{{ lang["form.submit"] }}</button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="form" id="role_reward_div">
+        <div class="form_in">
+            <div class="form_in_in">
+                <div id="role_div">
+                    <label for="role">{{ lang["form.role_reward.role"] }}</label>
+                    <select name="role" id="role">
+                        <option value="None">{{ lang["form.none"] }}</option>
+
+                        {% for role in infos['roles'] %}
+                            <option value="{{ role['id'] }}">{{ role['name'] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div id="level_div">
+                    <label for="level">{{ lang["form.role_reward.level"] }}</label>
+                    <input type="number" min="1" id="level">
+                </div>
+            </div>
+        </div>
+        <div class="button_div">
+            <button id="role_rewards_button" onclick="send_reward()">{{ lang["form.submit"] }}</button>
+            <button id="add_reward_button" onclick="add_role_reward()">{{ lang["form.add"] }}</button>
+        </div>
+    </div>
+    <div id="role_reward_set_div">
+        {% for reward in infos['role_rewards'] %}
+            <div class="role_reward_set_div_in">
+                <div class="role_set">
+                    <p id="{{ reward['id'] }}">{{ reward['role']['name'] }}</p>
+                </div>
+                <div class="level_set">
+                    <p>{{ reward['level'] }}</p>
+                </div>
+            </div>
+            <button class="reward_delete_button" onclick="reward_delete(this.parentElement)"><img src="/static/image/delete_button.png" alt="delete" class="delete_button"></button>
+        {% endfor %}
+    </div>
+{% endblock %}

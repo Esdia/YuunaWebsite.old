@@ -97,6 +97,30 @@
   "dashboard_no-guild_3": "manage server",
   "dashboard_no-guild_4": " to access the server's dashboard.",
 
+  "form.prefix": "Yuuna's command prefix",
+  "form.language": "The bot's language",
+  "form.english": "English",
+  "form.french": "French",
+  "form.disable": "Disable commands",
+  "form.autorole": "Autorole",
+  "form.none": "None",
+  "form.bot_master": "Bot master role",
+  "form.confirm": "Should Yuuna ask for a confirmation before running risky commands ?",
+  "form.levels": "The levelling system",
+  "form.ban_channels": "Ban channels from the levelling system",
+  "form.ban_roles": "Ban roles from the levelling system",
+  "form.level_up_message": "Level up message",
+  "level_up_default_message": "{player}, you leveled up, you are now level {level}.",
+  "form.message_sent": "Disable the level-up message",
+  "form.message_private": "Send the level-up message in private",
+  "form.antispam": "Levelling system's antispam",
+  "form.bankreward": "Coins won by levelling up",
+  "form.role_reward.role": "Role reward",
+  "form.role_reward.level": "Level",
+  "form.add": "Add",
+
+  "form.submit": "Save",
+
   "source_code": "The source code",
   "uses": "Uses"
 }

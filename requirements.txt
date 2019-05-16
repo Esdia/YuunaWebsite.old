@@ -1,3 +1,4 @@
+redis
 flask
 gunicorn
 requests_oauthlib

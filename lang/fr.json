@@ -97,6 +97,14 @@
   "dashboard_no-guild_3": "gérer le serveur",
   "dashboard_no-guild_4": " pour avoir accès au tableau de bord du serveur",
 
+  "form.prefix": "Préfixe",
+  "form.language": "Langage",
+  "form.english": "Anglais",
+  "form.french": "Français",
+  "form.disable": "Désactiver",
+
+  "form.submit": "Sauvegarder",
+
   "source_code": "Le code source",
   "uses": "Utilise"
 }

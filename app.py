@@ -1,8 +1,11 @@
+import asyncio
 import json
 import os
 
-from flask import Flask, render_template, make_response, request, redirect, url_for, session
+from flask import Flask, render_template, make_response, redirect, url_for, session, request
 from requests_oauthlib import OAuth2Session
+
+import script.storage as storage
 
 app = Flask(__name__)
 
@@ -155,6 +158,9 @@ def dashboard():
     return load('dashboard', lang=get_language(), guilds=guilds)
 
 
+"""
+    Temporary function to test the dashboard server selection page in local
+
 @app.route('/dashboard_test')
 def dash_test():
     guilds = [
@@ -167,21 +173,518 @@ def dash_test():
     ]
 
     return load('dashboard', lang=get_language(), guilds=guilds)
+"""
 
 
 @app.route('/dashboard_<guild_id>')
 def dashboard_server(guild_id):
+    if 'user' not in session:
+        session['last'] = "dashboard"
+        return redirect(
+            url_for('login')
+        )
+
     # We check if the user is allowed to access this page
     guilds = get_managed_guilds(
         get_guilds(session['token'])
     )
-    if not any(g[id] == guild_id for g in guilds):
+    if not any(g['id'] == guild_id for g in guilds):
         return redirect(
-            url_for('dash_test')
+            url_for('dashboard')
         )
 
-    # TODO
-    pass
+    # We fetch the guild
+    discord_session = make_session(token=session["token"])
+    try:
+        req = discord_session.get(
+            "https://discordapp.com/api/guilds/{}".format(
+                guild_id
+            )
+        )
+    except Exception:
+        return redirect(
+            url_for('dashboard')
+        )
+
+    guild = req.json()
+    key = guild_id + ":"
+    db = storage.database
+    lang = get_language()
+
+    _id = guild_id
+    prefix = db.get(key + "prefix")
+    if prefix is None:
+        prefix = "y!"
+
+    language = db.get(key + "language")
+    if language is None:
+        language = "en"
+    language_list = [
+        {'value': 'en', 'name': 'english'},
+        {'value': 'fr', 'name': 'french'}
+    ]
+
+    command_list = db.smembers("commands")
+    if command_list is None:
+        command_list = []
+    else:
+        # Those are aliases, we do not want them do show in the list
+        command_list.remove("bj")
+        command_list.remove("ttt")
+        command_list.remove("morpion")
+    disable = db.smembers(key + "disabled_commands")
+    if disable is None:
+        disable = []
+    else:
+        aliases = [
+            "bj",
+            "ttt",
+            "morpion"
+        ]
+        for al in aliases:
+            if al in disable:
+                disable.remove(al)
+
+    autorole = get_role(
+        db.get(key + 'autorole'),
+        guild
+    )
+
+    bot_master = get_role(
+        db.get(key + 'bot_master'),
+        guild
+    )
+
+    confirm = db.get(key + 'ignore_confirm')
+    confirm = True if (confirm is None or confirm == '1') else False
+
+    levels = db.get(key + 'level_enabled')
+    levels = True if (levels is None or levels == '1') else False
+
+    channels = get_channels(_id)
+    ban_channels = db.smembers(key + 'levels:banned_channels')
+    if ban_channels is None:
+        ban_channels = []
+
+    roles = get_roles(guild)
+    ban_roles = db.smembers(key + 'levels:banned_roles')
+    if ban_roles is None:
+        ban_roles = []
+
+    message = db.get(key + "levels:message")
+    if message is None:
+        message = lang['level_up_default_message']
+
+    message_sent = db.get(key + "levels:message_disabled")
+    message_sent = True if (message_sent is None or message_sent == '1') else False
+
+    message_private = db.get(key + "levels:message:private")
+    message_private = True if (message_private is None or message_private == '1') else False
+
+    antispam = db.get(key + 'xp_antispam')
+    antispam = 60 if antispam is None else int(antispam)
+
+    bankreward = db.get(key + 'levels:bank_reward')
+    bankreward = 50 if bankreward is None else int(bankreward)
+
+    role_reward = get_role_rewards(guild)
+
+    infos = {
+        'guild_id': guild_id,
+        'prefix': prefix,
+        'language_list': language_list,
+        'language_selected': language,
+        'command_list': command_list,
+        'disable': disable,
+        'autorole': autorole,
+        'bot_master': bot_master,
+        'ignore_confirm': confirm,
+        'levels': levels,
+        'channels': channels,
+        'ban_channels': ban_channels,
+        'roles': roles,
+        'ban_roles': ban_roles,
+        'message': message,
+        'message_sent': message_sent,
+        'message_private': message_private,
+        'antispam': antispam,
+        'bankreward': bankreward,
+        'role_rewards': role_reward
+    }
+
+    return load("dashboard_server", lang=lang, infos=infos)
+
+
+def get_channels(guild_id):
+    # We fetch the guild
+    discord_session = make_session(token=session["token"])
+    try:
+        req = discord_session.get(
+            "https://discordapp.com/api/guilds/{}/channels".format(
+                guild_id
+            )
+        )
+    except Exception:
+        return redirect(
+            url_for('dashboard')
+        )
+
+    channels = req.json()
+    channels_list = []
+    for c in channels:
+        if c['type'] == 0:
+            channels_list.append(
+                {
+                    'id': c['id'],
+                    'name': c['name']
+                }
+            )
+    return channels_list
+
+
+def get_role(_id, guild):
+    if id is None:
+        return None
+
+    for role in guild['roles']:
+        if role['id'] == _id:
+            return {
+                'id': _id,
+                'name': role['name'],
+                'color': str(hex(role['color']))[2:]
+            }
+
+    return None
+
+
+def get_roles(guild):
+    roles = [
+        {
+            'id': role['id'],
+            'name': role['name'],
+            'color': role['color']
+        } for role in guild['roles']
+    ]
+    return roles
+
+
+def get_role_rewards(guild):
+    guild_id = guild['id']
+    levels = storage.database.get(guild_id + ":levels:rewards")
+    if levels is None:
+        return None
+
+    roles = []
+    for l in levels:
+        ids = storage.database.smembers(guild_id + ":levels:reward:" + l)
+        for _id in ids:
+            r = get_role(_id, guild)
+            if r is not None:
+                roles.append(
+                    {
+                        "id": _id,
+                        "role": r,
+                        "level": l
+                    }
+                )
+    return roles
+
+
+@app.route('/dash_server_test', methods=['GET', 'POST'])
+def dashboard_server_test():
+    lang = get_language()
+
+    guild_id = "424344411468464145"
+    choices = [
+        (1, 1),
+        (2, 2),
+        (3, 3),
+        (4, 4),
+        (5, 5),
+        (6, 6),
+        (7, 7),
+        (8, 8),
+        (9, 9),
+        (10, 10)
+
+    ]
+
+    return load("dashboard_server", lang=lang)
+
+
+@app.route("/form_prefix", methods=['GET', 'POST'])
+def form_prefix():
+    post = str(request.args.get('post', 0))
+    if post == "":
+        post = "y!"
+    _id = str(request.args.get('_id', 0))
+
+    storage.database.set(
+        _id + ":prefix",
+        post
+    )
+    print("Prefix changed for guild " + _id + " : " + post)
+
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_language", methods=['GET', 'POST'])
+def form_language():
+    post = str(request.args.get('post', 0))
+    _id = str(request.args.get('_id', 0))
+
+    storage.database.set(
+        _id + ":language",
+        post
+    )
+    print("Language changed for guild " + _id + " : " + post)
+
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_disable", methods=['GET', 'POST'])
+def form_disable():
+    post = request.args.getlist('post')
+    _id = str(request.args.get('_id', 0))
+
+    storage.database.delete(
+        _id + ":disabled_commands"
+    )
+
+    for command in post:
+        storage.database.sadd(
+            _id + ":disabled_commands",
+            command
+        )
+    print("Commands disabled for guild " + _id + " : " + str(post))
+
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_autorole", methods=['GET', 'POST'])
+def form_autorole():
+    post = request.args.get('post', 0)
+    _id = str(request.args.get('_id', 0))
+
+    storage.database.set(
+        _id + ":autorole",
+        post
+    )
+    print("Autorole set for guild " + _id + " : " + post)
+
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_bot_master", methods=['GET', 'POST'])
+def form_bot_master():
+    post = request.args.get('post', 0)
+    _id = str(request.args.get('_id', 0))
+
+    storage.database.set(
+        _id + ":language",
+        post
+    )
+    print("Bot master role set for guild " + _id + " : " + post)
+
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_confirm", methods=['GET', 'POST'])
+def form_confirm():
+    post = request.args.get('post', 0)
+    _id = str(request.args.get('_id', 0))
+    if post == "true":
+        storage.database.delete(
+            _id + ":ignore_confirm"
+        )
+    else:
+        storage.database.set(
+            _id + ":ignore_confirm",
+            1
+        )
+
+    print("Yuuna ignores the confirmation procedure for guild " + _id + " : " + str(not post))
+
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_levels", methods=['GET', 'POST'])
+def form_levels():
+    post = request.args.get('post', 0)
+    _id = str(request.args.get('_id', 0))
+    if post == "true":
+        storage.database.delete(
+            _id + ":level_enabled"
+        )
+    else:
+        storage.database.set(
+            _id + ":level_enabled",
+            1
+        )
+
+    print("Levelling system enabled for guild " + _id + " : " + str(post))
+
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_ban_channels", methods=['GET', 'POST'])
+def form_ban_channels():
+    post = request.args.getlist('post')
+    _id = str(request.args.get('_id', 0))
+
+    storage.database.delete(
+        _id + ":levels:banned_channels"
+    )
+
+    for channel_id in post:
+        storage.database.sadd(
+            _id + ":levels:banned_channels",
+            channel_id
+        )
+    print("Channels banned from levelling system for guild " + _id + " : " + str(post))
+
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_ban_roles", methods=['GET', 'POST'])
+def form_ban_roles():
+    post = request.args.getlist('post')
+    _id = str(request.args.get('_id', 0))
+
+    storage.database.delete(
+        _id + ":levels:banned_roles"
+    )
+
+    for role_id in post:
+        storage.database.sadd(
+            _id + ":levels:banned_roles",
+            role_id
+        )
+    print("Roles banned from levelling system for guild " + _id + " : " + str(post))
+
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_message", methods=['GET', 'POST'])
+def form_message():
+    post = request.args.get('post', 0)
+    _id = str(request.args.get('_id', 0))
+
+    if post == "":
+        storage.database.delete(
+            "levels:message"
+        )
+    else:
+        storage.database.set(
+            "levels:message",
+            post
+        )
+
+    print("Level up message set for levelling system for guild " + _id + " : " + str(post))
+
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_sent", methods=['GET', 'POST'])
+def form_sent():
+    post = request.args.get('post', 0)
+    _id = str(request.args.get('_id', 0))
+    if post == "true":
+        storage.database.delete(
+            _id + ":levels:message_disabled"
+        )
+    else:
+        storage.database.set(
+            _id + ":levels:message_disabled",
+            1
+        )
+
+    print("Level up message will be sent for guild " + _id + " : " + str(post))
+
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_private", methods=['GET', 'POST'])
+def form_private():
+    post = request.args.get('post', 0)
+    _id = str(request.args.get('_id', 0))
+    if post == "true":
+        storage.database.delete(
+            _id + ":levels:message:private"
+        )
+    else:
+        storage.database.set(
+            _id + ":levels:message:private",
+            1
+        )
+
+    print("Level up message will be sent in private for guild " + _id + " : " + str(post))
+
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_antispam", methods=['GET', 'POST'])
+def form_antispam():
+    post = str(request.args.get('post', 0))
+    if post == "":
+        post = "60"
+    _id = str(request.args.get('_id', 0))
+
+    storage.database.set(
+        _id + ":xp_antispam",
+        post
+    )
+    print("Levelling system's antispam changed for guild " + _id + " : " + post)
+
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_bankreward", methods=['GET', 'POST'])
+def form_bankreward():
+    post = str(request.args.get('post', 0))
+    if post == "":
+        post = "50"
+    _id = str(request.args.get('_id', 0))
+
+    storage.database.set(
+        _id + ":levels:bank_reward",
+        post
+    )
+    print("Bank reward by levelling up changed for guild " + _id + " : " + post)
+    return json.dumps({'selected post': str(post)})
+
+
+@app.route("/form_role_reward", methods=['GET', 'POST'])
+def form_role_reward():
+    post = request.args.getlist('post')
+    _id = str(request.args.get('_id', 0))
+
+    levels = storage.database.smembers(
+        _id + ":levels:rewards"
+    )
+    storage.database.delete(
+        _id + ":levels:rewards"
+    )
+
+    for l in levels:
+        storage.database.delete(
+            _id + ":levels:reward:" + l
+        )
+
+    for reward in post:
+        r = reward.split(",")
+        storage.database.sadd(
+            _id + ":levels:rewards",
+            r[1]
+        )
+        storage.database.sadd(
+            _id + ":levels:reward:" + str(r[1]),
+            r[0]
+        )
+
+    print("Role rewards by levelling up changed for guild " + _id + " : " + str(post))
+
+    return json.dumps({'selected post': str(post)})
 
 
 def make_session(token=None, state=None, scope=None):
@@ -318,5 +821,7 @@ def set_lang(lang):
 
 
 if __name__ == '__main__':
+    asyncio.get_event_loop().create_task(storage.refresh_redis())
+
     app.debug = True
     app.run(host='0.0.0.0', port=5005)
