@@ -378,7 +378,7 @@ def get_role_rewards(guild):
     guild_id = guild['id']
     levels = db.get(guild_id + ":levels:rewards")
     if levels is None:
-        return None
+        return []
 
     roles = []
     for l in levels:
