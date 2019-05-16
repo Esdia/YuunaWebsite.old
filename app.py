@@ -15,7 +15,8 @@ AUTH_URL = os.environ.get('AUTH_URL')
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
-db = None
+redis_url = os.environ.get("REDIS_URL")
+db = redis.Redis.from_url(redis_url, decode_responses=True)
 
 
 def get_language():
@@ -820,10 +821,5 @@ def set_lang(lang):
 
 
 if __name__ == '__main__':
-    global db
-
-    redis_url = os.environ.get("REDIS_URL")
-    db = redis.Redis.from_url(redis_url, decode_responses=True)
-
     app.debug = True
     app.run(host='0.0.0.0', port=5005)
