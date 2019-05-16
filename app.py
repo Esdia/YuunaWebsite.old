@@ -1,6 +1,7 @@
 import redis
 import json
 import os
+import traceback
 
 from flask import Flask, render_template, make_response, redirect, url_for, session, request
 from requests_oauthlib import OAuth2Session
@@ -205,7 +206,7 @@ def dashboard_server(guild_id):
             )
         )
     except Exception:
-        print(Exception)
+        traceback.print_exc()
         print("ERROR : No permission to access this page : redirecting to /dashboard")
         return redirect(
             url_for('dashboard')
