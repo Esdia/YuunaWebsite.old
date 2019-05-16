@@ -194,6 +194,7 @@ def dashboard_server(guild_id):
     for g in guilds:
         print(g['id'] + " : " + guild_id)
         if g['id'] == guild_id:
+            print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
             ok = True
     if ok:
         return redirect(
