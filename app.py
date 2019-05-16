@@ -190,13 +190,8 @@ def dashboard_server(guild_id):
     guilds = get_managed_guilds(
         get_guilds(session['token'])
     )
-    ok = False
-    for g in guilds:
-        print(g['id'] + " : " + guild_id)
-        if g['id'] == guild_id:
-            print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-            ok = True
-    if not ok:
+
+    if not any(g['id'] == guild_id for g in guilds):
         return redirect(
             url_for('dashboard')
         )
@@ -210,6 +205,7 @@ def dashboard_server(guild_id):
             )
         )
     except Exception:
+        print("ERROR : No permission to access this page : redirecting to /dashboard")
         return redirect(
             url_for('dashboard')
         )
