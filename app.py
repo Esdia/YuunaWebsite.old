@@ -197,7 +197,7 @@ def dashboard_server(guild_id):
         )
 
     # We fetch the guild
-    discord_session = make_session(token=TOKEN)
+    discord_session = make_session(token=session['token'])
     try:
         req = discord_session.get(
             "https://discordapp.com/api/guilds/{}".format(
@@ -322,7 +322,7 @@ def dashboard_server(guild_id):
 
 def get_channels(guild_id):
     # We fetch the guild
-    discord_session = make_session(token=TOKEN)
+    discord_session = make_session(token=session['token'])
     try:
         req = discord_session.get(
             "https://discordapp.com/api/guilds/{}/channels".format(
