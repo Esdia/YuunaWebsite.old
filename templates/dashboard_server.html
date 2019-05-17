@@ -35,7 +35,7 @@
                 <label for="language_select">{{ lang["form.language"] }}</label>
                 <select name="language" id="language_select">
                     {% for l in infos['language_list'] %}
-                        <option value={{ l['value'] }} {% if 'default' in l %} selected {% endif %}>{{ lang['form.' + l['name']] }}</option>
+                        <option value={{ l['value'] }} {% if l == infos['language_selected'] %} selected {% endif %}>{{ lang['form.' + l['name']] }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -115,7 +115,7 @@
             <div>
                 <label for="confirm">{{ lang["form.confirm"] }}</label>
                 <label class="switch">
-                    <input type="checkbox" id="confirm" {% if not infos['ignore_confirm'] %} checked {% endif %}/>
+                    <input type="checkbox" id="confirm" {% if infos['confirm'] %} checked {% endif %}/>
                     <span class="slider"></span>
                 </label>
             </div>

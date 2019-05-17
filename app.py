@@ -261,10 +261,10 @@ def dashboard_server(guild_id):
     )
 
     confirm = db.get(key + 'ignore_confirm')
-    confirm = True if (confirm is None or confirm == '1') else False
+    confirm = True if (confirm is None) else False
 
     levels = db.get(key + 'level_enabled')
-    levels = True if (levels is None or levels == '1') else False
+    levels = False if (levels is None) else True
 
     channels = get_channels(_id)
     ban_channels = db.smembers(key + 'levels:banned_channels')
@@ -303,7 +303,7 @@ def dashboard_server(guild_id):
         'disable': disable,
         'autorole': autorole,
         'bot_master': bot_master,
-        'ignore_confirm': confirm,
+        'confirm': confirm,
         'levels': levels,
         'channels': channels,
         'ban_channels': ban_channels,

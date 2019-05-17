@@ -26,7 +26,7 @@ let items = [
             'data_func': data_select
         },
         {
-            'info_key': "ignore_confirm",
+            'info_key': "confirm",
             'id_name': "confirm",
             'data_func': data_check
         },
