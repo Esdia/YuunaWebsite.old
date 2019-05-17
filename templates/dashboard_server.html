@@ -303,8 +303,8 @@
                 <div class="level_set">
                     <p>{{ reward['level'] }}</p>
                 </div>
+                <button class="reward_delete_button" onclick="reward_delete(this.parentElement)"><img src="/static/image/delete_button.png" alt="delete" class="delete_button"></button>
             </div>
-            <button class="reward_delete_button" onclick="reward_delete(this.parentElement)"><img src="/static/image/delete_button.png" alt="delete" class="delete_button"></button>
         {% endfor %}
     </div>
 {% endblock %}
