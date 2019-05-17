@@ -80,7 +80,7 @@
                 <select name="autorole" id="autorole">
                     <option value="None">{{ lang["form.none"] }}</option>
                     {% for r in infos['roles'] %}
-                        <option value="{{ r['id'] }}" {% if r['id'] == infos['autorole']['id'] %} selected {% endif %}>{{ r['name'] }}</option>
+                        <option value="{{ str(r['id']) }}" {% if r['id'] == infos['autorole']['id'] %} selected {% endif %}>{{ r['name'] }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -247,7 +247,7 @@
         <div class="form_in">
             <div>
                 <label for="antispam">{{ lang["form.antispam"] }}</label>
-                <input type="number" id="antispam" value="{{ infos['antispam'] }}" min="0">
+                <input type="number" id="antispam" value="{{ int(infos['antispam']) }}" min="0">
             </div>
         </div>
         <div class="button_div">
@@ -261,7 +261,7 @@
         <div class="form_in">
             <div>
                 <label for="bankreward">{{ lang["form.bankreward"] }}</label>
-                <input type="number" id="bankreward" value="{{ infos['bankreward'] }}" min="0">
+                <input type="number" id="bankreward" value="{{ int(infos['bankreward']) }}" min="0">
             </div>
         </div>
         <div class="button_div">

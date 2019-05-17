@@ -252,15 +252,9 @@ def dashboard_server(guild_id):
                 disable.remove(al)
         disable = list(disable)
 
-    autorole = get_role(
-        db.get(key + 'autorole'),
-        guild
-    )
+    autorole = db.get(key + 'autorole')
 
-    bot_master = get_role(
-        db.get(key + 'bot_master'),
-        guild
-    )
+    bot_master = db.get(key + 'bot_master')
 
     confirm = db.get(key + 'ignore_confirm')
     confirm = int(confirm is None)
@@ -293,10 +287,10 @@ def dashboard_server(guild_id):
     message_private = int(message_private is None)
 
     antispam = db.get(key + 'xp_antispam')
-    antispam = 60 if antispam is None else int(antispam)
+    antispam = "60" if antispam is None else str(antispam)
 
     bankreward = db.get(key + 'levels:bank_reward')
-    bankreward = 50 if bankreward is None else int(bankreward)
+    bankreward = "50" if bankreward is None else str(bankreward)
 
     role_reward = get_role_rewards(guild)
 

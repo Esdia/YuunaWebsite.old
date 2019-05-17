@@ -82,6 +82,20 @@ function save_id(_id) {
     GUILD_ID = _id;
 }
 
+function check_equals(a, b) {
+    if (a === b) return true;
+    if (a == null || b == null) return false;
+    if (a.length !== b.length) return false;
+
+    a.sort();
+    b.sort();
+
+    for(let i = 0; i < a.length; i++) {
+        if(a[i] !== b[i]) return false;
+    }
+    return true;
+}
+
 function check_default(default_infos) {
     for(let i = 0; i < items.length; i++) {
         let id_name = items[i]['id_name'];
@@ -89,7 +103,14 @@ function check_default(default_infos) {
         let _default = default_infos[items[i]['info_key']];
 
         let x = document.getElementById(items[i]['info_key'] + "_button");
-        if(value !== _default) {
+
+        if (value.constructor === Array) {
+            if (check_equals(value, _default)) {
+                x.style.display = "unset";
+            } else {
+                x.style.display = "none";
+            }
+        } else if (value !== _default) {
             x.style.display = "unset";
         } else {
             x.style.display = "none";
@@ -153,7 +174,10 @@ function data_multiple_choice(class_name) {
 /* For checkboxes type field */
 function data_check(id_name) {
     let x = document.getElementById(id_name);
-    return x.checked;
+    if (x.checked) {
+        return 1
+    }
+    return 0;
 }
 
 /* For the role rewards */
