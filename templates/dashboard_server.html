@@ -12,7 +12,7 @@
     <script src="{{ url_for('static', filename='forms.js') }}"></script>
 
     <script>
-        save_id({{ infos }});
+        save_id({{ infos['guild_id'] }});
         set_event({{ infos }});
     </script>
 

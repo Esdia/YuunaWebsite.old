@@ -78,8 +78,8 @@ let items = [
     ];
 
 /* Used to keep track of the defaults parameters */
-function save_id(infos) {
-    GUILD_ID = infos['guild_id'];
+function save_id(_id) {
+    GUILD_ID = _id;
 }
 
 function check_default(default_infos) {
