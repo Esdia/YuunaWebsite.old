@@ -261,10 +261,10 @@ def dashboard_server(guild_id):
     )
 
     confirm = db.get(key + 'ignore_confirm')
-    confirm = True if (confirm is None) else False
+    confirm = confirm is None
 
     levels = db.get(key + 'level_enabled')
-    levels = False if (levels is None) else True
+    levels = levels is not None
 
     channels = get_channels(_id)
     ban_channels = db.smembers(key + 'levels:banned_channels')
@@ -281,10 +281,10 @@ def dashboard_server(guild_id):
         message = lang['level_up_default_message']
 
     message_sent = db.get(key + "levels:message_disabled")
-    message_sent = True if (message_sent is None or message_sent == '1') else False
+    message_sent = message_sent is None
 
     message_private = db.get(key + "levels:message:private")
-    message_private = True if (message_private is None or message_private == '1') else False
+    message_private = message_private is None
 
     antispam = db.get(key + 'xp_antispam')
     antispam = 60 if antispam is None else int(antispam)
@@ -376,7 +376,7 @@ def get_roles(guild):
 
 def get_role_rewards(guild):
     guild_id = guild['id']
-    levels = db.get(guild_id + ":levels:rewards")
+    levels = db.smembers(guild_id + ":levels:rewards")
     if levels is None:
         return []
 
