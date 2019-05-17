@@ -154,7 +154,7 @@ function check_reward_syntax() {
     ];
 
     let x = document.getElementById("add_reward_button");
-    if(value[0] !== "None" && !isNaN(value[1]) && 0 < +value[1] <= 100) {
+    if(value[0] !== "None" && !isNaN(value[1]) && 0 < +value[1] && +value[1] <= 100) {
         x.style.display = "unset";
     } else {
         x.style.display = "none";
@@ -403,7 +403,7 @@ function reward_delete(elem) {
 }
 
 /* This function adds as role reward */
-function add_role_reward(role_id) {
+function add_role_reward() {
     let value = [
         data_select("role"),
         data_input("level"),
@@ -424,7 +424,7 @@ function add_role_reward(role_id) {
     let p_role = document.createElement("P");
     let y = document.getElementById("role");
     p_role.innerHTML = y.options[y.selectedIndex].innerHTML;
-    p_role.id = role_id;
+    p_role.id = value[0];
 
     let p_level = document.createElement("P");
     p_level.innerHTML = value[1];
