@@ -82,18 +82,21 @@ function save_id(_id) {
     GUILD_ID = _id;
 }
 
-function check_equals(a, b) {
-    if (a === b) return true;
-    if (a == null || b == null) return false;
-    if (a.length !== b.length) return false;
+function check_different(a, b) {
+    if (a === b) return false;
+    if (a == null || b == null) return true;
+    if (a.length !== b.length) return true;
 
     a.sort();
     b.sort();
 
     for(let i = 0; i < a.length; i++) {
-        if(a[i] !== b[i]) return false;
+        if(a[i].constructor !== b[i].constructor) return true;
+        if(a[i].constructor === Array) {
+            if(check_different(a[i], b[i])) return true
+        } else if(a[i] !== b[i]) return true;
     }
-    return true;
+    return false;
 }
 
 function check_default(default_infos) {
@@ -105,7 +108,7 @@ function check_default(default_infos) {
         let x = document.getElementById(items[i]['info_key'] + "_button");
 
         if (value.constructor === Array) {
-            if (check_equals(value, _default)) {
+            if (check_different(value, _default)) {
                 x.style.display = "unset";
             } else {
                 x.style.display = "none";
@@ -190,7 +193,7 @@ function data_reward(id_name) {
             let vals = [];
             for(let j = 0; j < x[i].children.length; j++) {
                 if(x[i].children[j].classList.contains("role_set")) {
-                    vals.push(x[i].children[j].children[0].innerHTML);
+                    vals.push(x[i].children[j].children[0].id);
                 } else if (x[i].children[j].classList.contains("level_set")) {
                     vals.push(x[i].children[j].children[0].innerHTML);
                 }

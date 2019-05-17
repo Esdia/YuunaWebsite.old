@@ -80,7 +80,7 @@
                 <select name="autorole" id="autorole">
                     <option value="None">{{ lang["form.none"] }}</option>
                     {% for r in infos['roles'] %}
-                        <option value="{{ r['id'] }}" {% if r['id'] == infos['autorole']['id'] %} selected {% endif %}>{{ r['name'] }}</option>
+                        <option value="{{ r['id'] }}" {% if r['id'] == infos['autorole'] %} selected {% endif %}>{{ r['name'] }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -99,7 +99,7 @@
                 <select name="bot_master" id="bot_master" >
                     <option value="None">{{ lang["form.none"] }}</option>
                     {% for r in infos['roles'] %}
-                        <option value="{{ r['id'] }}" {% if r['id'] == infos['bot_master']['id'] %} selected {% endif %}>{{ r['name'] }}</option>
+                        <option value="{{ r['id'] }}" {% if r['id'] == infos['bot_master'] %} selected {% endif %}>{{ r['name'] }}</option>
                     {% endfor %}
                 </select>
             </div>
