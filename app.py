@@ -272,11 +272,15 @@ def dashboard_server(guild_id):
     ban_channels = db.smembers(key + 'levels:banned_channels')
     if ban_channels is None:
         ban_channels = []
+    else:
+        ban_channels = list(ban_channels)
 
     roles = get_roles(guild)
     ban_roles = db.smembers(key + 'levels:banned_roles')
     if ban_roles is None:
         ban_roles = []
+    else:
+        ban_roles = list(ban_roles)
 
     message = db.get(key + "levels:message")
     if message is None:
