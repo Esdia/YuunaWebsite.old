@@ -237,6 +237,7 @@ def dashboard_server(guild_id):
         command_list.remove("bj")
         command_list.remove("ttt")
         command_list.remove("morpion")
+        command_list = list(command_list)
     disable = db.smembers(key + "disabled_commands")
     if disable is None:
         disable = []
@@ -249,6 +250,7 @@ def dashboard_server(guild_id):
         for al in aliases:
             if al in disable:
                 disable.remove(al)
+        disable = list(disable)
 
     autorole = get_role(
         db.get(key + 'autorole'),
