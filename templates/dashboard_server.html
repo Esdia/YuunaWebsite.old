@@ -13,7 +13,7 @@
 
     <script>
         save_id({{ infos['guild_id'] }});
-        set_event({{ infos }});
+        set_event({{ infos | safe }});
     </script>
 
     <div class="form" id="prefix_div">
