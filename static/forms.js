@@ -137,7 +137,7 @@ function check_default(default_infos) {
             }
         } else {
             let val = [];
-            for (let i = 0; i < values.length; i++) {
+            for (let i = 0; i < value.length; i++) {
                 val.push(value[i].split(','));
             }
 
