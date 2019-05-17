@@ -314,10 +314,12 @@ function click_key_event(infos) {
     check_reward_syntax();
 }
 
-window.onload = function () {
-    document.body.onclick = () => click_key_event();
-    document.body.onkeypress = () => click_key_event()
-};
+function set_event(infos) {
+    window.onload = function () {
+        document.body.onclick = () => click_key_event(infos);
+        document.body.onkeypress = () => click_key_event(infos)
+    };
+}
 
 /* This functions selects a value in the multiple choices fields */
 function select(elem, item) {
