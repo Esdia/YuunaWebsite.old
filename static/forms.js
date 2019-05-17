@@ -1,4 +1,4 @@
-let default_infos;
+let GUILD_ID;
 let items = [
         {
             'info_key': "prefix",
@@ -78,11 +78,11 @@ let items = [
     ];
 
 /* Used to keep track of the defaults parameters */
-function make_defaults(infos) {
-    default_infos = infos;
+function save_id(infos) {
+    GUILD_ID = infos['guild_id'];
 }
 
-function check_default() {
+function check_default(default_infos) {
     for(let i = 0; i < items.length; i++) {
         let id_name = items[i]['id_name'];
         let value = items[i]['data_func'](id_name);
@@ -117,7 +117,7 @@ function send_data(url, value, traditional=false) {
         url: url,
         data: {
             post: value,
-            _id: default_infos['guild_id']
+            _id: GUILD_ID
         },
         traditional: traditional
     });
@@ -309,9 +309,14 @@ window.onclick = function(event) {
     }
 };
 
-window.onkeypress = function() {
-    check_default();
+function click_key_event(infos) {
+    check_default(infos);
     check_reward_syntax();
+}
+
+window.onload = function () {
+    document.body.onclick = () => click_key_event();
+    document.body.onkeypress = () => click_key_event()
 };
 
 /* This functions selects a value in the multiple choices fields */
