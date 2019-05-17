@@ -369,7 +369,8 @@ function add_role_reward(role_id) {
     level_set.classList.add("level_set");
 
     let p_role = document.createElement("P");
-    p_role.innerHTML = value[0];
+    let y = document.getElementById("role");
+    p_role.innerHTML = y.options[y.selectedIndex].innerHTML;
     p_role.id = role_id;
 
     let p_level = document.createElement("P");
