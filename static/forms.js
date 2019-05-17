@@ -99,6 +99,22 @@ function check_different(a, b) {
     return false;
 }
 
+function different_reward(value, _default) {
+    let valInDefault = value.every(
+        (val) =>
+            _default.some(
+                (def) => val[0] === def['id'] && val[1] === def['level']
+            )
+    );
+    let defaultInVal = _default.every(
+        (def) =>
+            value.some(
+                (val) => val[0] === def['id'] && val[1] === def['level']
+            )
+    );
+    return !valInDefault || !defaultInVal;
+}
+
 function check_default(default_infos) {
     for(let i = 0; i < items.length; i++) {
         let id_name = items[i]['id_name'];
@@ -107,18 +123,33 @@ function check_default(default_infos) {
 
         let x = document.getElementById(items[i]['info_key'] + "_button");
 
-        if (value.constructor === Array) {
-            if (check_different(value, _default)) {
+        if (id_name !== "role_reward_set_div") {
+            if (value.constructor === Array) {
+                if (check_different(value, _default)) {
+                    x.style.display = "unset";
+                } else {
+                    x.style.display = "none";
+                }
+            } else if (value !== _default) {
                 x.style.display = "unset";
             } else {
                 x.style.display = "none";
             }
-        } else if (value !== _default) {
-            x.style.display = "unset";
         } else {
-            x.style.display = "none";
+            let val = [];
+            for (let i = 0; i < values.length; i++) {
+                val.push(value[i].split(','));
+            }
+
+            if(different_reward(val, _default)) {
+                x.style.display = "unset";
+            } else {
+                x.style.display = "none";
+            }
         }
     }
+
+
 }
 
 function check_reward_syntax() {
@@ -128,7 +159,7 @@ function check_reward_syntax() {
     ];
 
     let x = document.getElementById("add_reward_button");
-    if(value[0] !== "None" && value[1] !== "0") {
+    if(value[0] !== "None" && !isNaN(value[1]) && 0 < +value[1] <= 100) {
         x.style.display = "unset";
     } else {
         x.style.display = "none";
