@@ -277,9 +277,6 @@ function drop(item) {
 /* This function draws back the dropdowns menus if we click outside of them
 * It also checks if the form fields are still on their default values */
 window.onclick = function(event) {
-    check_default();
-    check_reward_syntax();
-
     let items = [
         "disable",
         "ban_channels",
