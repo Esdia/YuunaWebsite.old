@@ -366,7 +366,7 @@ function click_key_event(infos) {
 
 function set_event(infos) {
     document.body.onclick = () => click_key_event(infos);
-    document.body.onkeypress = () => click_key_event(infos)
+    document.body.onkeyup = () => click_key_event(infos);
 }
 
 /* This functions selects a value in the multiple choices fields */
