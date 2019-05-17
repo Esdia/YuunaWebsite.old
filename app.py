@@ -263,10 +263,10 @@ def dashboard_server(guild_id):
     )
 
     confirm = db.get(key + 'ignore_confirm')
-    confirm = confirm is None
+    confirm = int(confirm is None)
 
     levels = db.get(key + 'level_enabled')
-    levels = levels is not None
+    levels = int(levels is not None)
 
     channels = get_channels(_id)
     ban_channels = db.smembers(key + 'levels:banned_channels')
@@ -287,10 +287,10 @@ def dashboard_server(guild_id):
         message = lang['level_up_default_message']
 
     message_sent = db.get(key + "levels:message_disabled")
-    message_sent = message_sent is None
+    message_sent = int(message_sent is None)
 
     message_private = db.get(key + "levels:message:private")
-    message_private = message_private is None
+    message_private = int(message_private is None)
 
     antispam = db.get(key + 'xp_antispam')
     antispam = 60 if antispam is None else int(antispam)

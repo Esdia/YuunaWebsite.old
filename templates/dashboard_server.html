@@ -57,13 +57,13 @@
             </button>
             <div id="disable_choices_div" class="disable_choices_div choices_drop">
                 {% for c in infos['command_list'] %}
-                    <button onclick="select(this, 'disable')" class="choice_disable" value="{{ c }}" {% if c in infos['disable'] %} style="display: none" {% endif %}>{{ infos['prefix']+c }}</button>
+                    <button onclick="select(this, 'disable')" class="choice_disable" value="{{ c }}" {% if c in infos['disable'] %} style="display: none" {% endif %}>{{ c }}</button>
                 {% endfor %}
             </div>
         </div>
         <div class="selected_div" id="disable_selected">
             {% for c in infos['command_list'] %}
-                <button class="selected disable_selected" value="{{ c }}" {% if c in infos['disable'] %} style="display: flex" {% endif %}>{{ infos['prefix']+c }}<img src="/static/image/delete_button.png" alt="delete" class="delete_button disable_delete_button" onclick="unselect(this.parentElement, 'disable')" ></button>
+                <button class="selected disable_selected" value="{{ c }}" {% if c in infos['disable'] %} style="display: flex" {% endif %}>{{ c }}<img src="/static/image/delete_button.png" alt="delete" class="delete_button disable_delete_button" onclick="unselect(this.parentElement, 'disable')" ></button>
             {% endfor %}
         </div>
         <div class="button_div">
