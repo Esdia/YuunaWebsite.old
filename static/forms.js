@@ -136,12 +136,7 @@ function check_default(default_infos) {
                 x.style.display = "none";
             }
         } else {
-            let val = [];
-            for (let i = 0; i < value.length; i++) {
-                val.push(value[i].split(','));
-            }
-
-            if(different_reward(val, _default)) {
+            if(different_reward(value, _default)) {
                 x.style.display = "unset";
             } else {
                 x.style.display = "none";
