@@ -460,7 +460,7 @@ def form_bot_master():
 def form_confirm():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
-    if str(post) == 1:
+    if int(post) == 1:
         db.delete(
             _id + ":ignore_confirm"
         )
@@ -479,7 +479,7 @@ def form_confirm():
 def form_levels():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
-    if str(post) == 0:
+    if int(post) == 0:
         db.delete(
             _id + ":level_enabled"
         )
@@ -556,7 +556,7 @@ def form_message():
 def form_sent():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
-    if str(post) == 1:
+    if int(post) == 1:
         db.delete(
             _id + ":levels:message_disabled"
         )
@@ -575,7 +575,7 @@ def form_sent():
 def form_private():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
-    if str(post) == 1:
+    if int(post) == 1:
         db.delete(
             _id + ":levels:message:private"
         )
