@@ -1,4 +1,3 @@
-let GUILD_ID;
 let items = [
         {
             'info_key': "prefix",
@@ -76,11 +75,6 @@ let items = [
             'data_func': data_reward
         }
     ];
-
-/* Used to keep track of the defaults parameters */
-function save_id(_id) {
-    GUILD_ID = _id;
-}
 
 function check_different(a, b) {
     if (a === b) return false;
@@ -167,7 +161,6 @@ function send_data(url, value, traditional=false) {
         url: url,
         data: {
             post: value,
-            _id: GUILD_ID
         },
         traditional: traditional
     });

@@ -299,6 +299,8 @@ def dashboard_server(guild_id):
         'role_rewards': role_reward
     }
 
+    session['GUILD_ID'] = guild_id
+
     return load("dashboard_server", lang=lang, infos=infos)
 
 
@@ -383,10 +385,7 @@ def form_prefix():
     post = str(request.args.get('post', 0))
     if post == "":
         post = "y!"
-    _id = str(request.args.get('_id', 0))
-
-    print(_id+":prefix")
-    print(post)
+    _id = session['GUILD_ID']
     db.set(
         _id + ":prefix",
         post
@@ -399,7 +398,7 @@ def form_prefix():
 @app.route("/form_language", methods=['GET', 'POST'])
 def form_language():
     post = str(request.args.get('post', 0))
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
 
     db.set(
         _id + ":language",
@@ -413,7 +412,7 @@ def form_language():
 @app.route("/form_disable", methods=['GET', 'POST'])
 def form_disable():
     post = request.args.getlist('post')
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
 
     db.delete(
         _id + ":disabled_commands"
@@ -432,7 +431,7 @@ def form_disable():
 @app.route("/form_autorole", methods=['GET', 'POST'])
 def form_autorole():
     post = request.args.get('post', 0)
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
 
     db.set(
         _id + ":autorole",
@@ -446,7 +445,7 @@ def form_autorole():
 @app.route("/form_bot_master", methods=['GET', 'POST'])
 def form_bot_master():
     post = request.args.get('post', 0)
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
 
     db.set(
         _id + ":language",
@@ -460,7 +459,7 @@ def form_bot_master():
 @app.route("/form_confirm", methods=['GET', 'POST'])
 def form_confirm():
     post = request.args.get('post', 0)
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
     if post == "true":
         db.delete(
             _id + ":ignore_confirm"
@@ -479,7 +478,7 @@ def form_confirm():
 @app.route("/form_levels", methods=['GET', 'POST'])
 def form_levels():
     post = request.args.get('post', 0)
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
     if post == "true":
         db.delete(
             _id + ":level_enabled"
@@ -498,7 +497,7 @@ def form_levels():
 @app.route("/form_ban_channels", methods=['GET', 'POST'])
 def form_ban_channels():
     post = request.args.getlist('post')
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
 
     db.delete(
         _id + ":levels:banned_channels"
@@ -517,7 +516,7 @@ def form_ban_channels():
 @app.route("/form_ban_roles", methods=['GET', 'POST'])
 def form_ban_roles():
     post = request.args.getlist('post')
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
 
     db.delete(
         _id + ":levels:banned_roles"
@@ -536,7 +535,7 @@ def form_ban_roles():
 @app.route("/form_message", methods=['GET', 'POST'])
 def form_message():
     post = request.args.get('post', 0)
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
 
     if post == "":
         db.delete(
@@ -556,7 +555,7 @@ def form_message():
 @app.route("/form_sent", methods=['GET', 'POST'])
 def form_sent():
     post = request.args.get('post', 0)
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
     if post == "true":
         db.delete(
             _id + ":levels:message_disabled"
@@ -575,7 +574,7 @@ def form_sent():
 @app.route("/form_private", methods=['GET', 'POST'])
 def form_private():
     post = request.args.get('post', 0)
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
     if post == "true":
         db.delete(
             _id + ":levels:message:private"
@@ -596,7 +595,7 @@ def form_antispam():
     post = str(request.args.get('post', 0))
     if post == "":
         post = "60"
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
 
     db.set(
         _id + ":xp_antispam",
@@ -612,7 +611,7 @@ def form_bankreward():
     post = str(request.args.get('post', 0))
     if post == "":
         post = "50"
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
 
     db.set(
         _id + ":levels:bank_reward",
@@ -625,7 +624,7 @@ def form_bankreward():
 @app.route("/form_role_reward", methods=['GET', 'POST'])
 def form_role_reward():
     post = request.args.getlist('post')
-    _id = str(request.args.get('_id', 0))
+    _id = session['GUILD_ID']
 
     levels = db.smembers(
         _id + ":levels:rewards"
