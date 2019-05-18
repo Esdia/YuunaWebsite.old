@@ -448,7 +448,7 @@ def form_bot_master():
     _id = session['GUILD_ID']
 
     db.set(
-        _id + ":language",
+        _id + ":bot_master",
         post
     )
     print("Bot master role set for guild " + _id + " : " + post)
@@ -460,7 +460,7 @@ def form_bot_master():
 def form_confirm():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
-    if post == "true":
+    if post is True:
         db.delete(
             _id + ":ignore_confirm"
         )
@@ -479,7 +479,7 @@ def form_confirm():
 def form_levels():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
-    if post == "true":
+    if post is False:
         db.delete(
             _id + ":level_enabled"
         )
@@ -537,7 +537,7 @@ def form_message():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
 
-    if post == "":
+    if not post:
         db.delete(
             "levels:message"
         )
