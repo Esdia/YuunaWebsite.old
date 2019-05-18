@@ -161,24 +161,6 @@ def dashboard():
     return load('dashboard', lang=get_language(), guilds=guilds)
 
 
-"""
-    Temporary function to test the dashboard server selection page in local
-
-@app.route('/dashboard_test')
-def dash_test():
-    guilds = [
-        {'owner': False, 'permissions': 389533425, 'icon': '95c8f2129d2b537978e00f18128fe83c', 'id': '382254754530590741', 'name': 'Skourte'},
-        {'owner': True, 'permissions': 2146959359, 'icon': 'dc4d4fb7208c6290e07e88412bc999df', 'id': '424344411468464145', 'name': 'Test'},
-        {'owner': True, 'permissions': 2146959359, 'icon': '01865888cf52328574562a097ab189a6', 'id': '468932825769574400', 'name': 'YuYuQuest'},
-        {'owner': False, 'permissions': 2117467889, 'icon': None, 'id': '489447519017893888', 'name': 'Min-Int'},
-        {'owner': False, 'permissions': 2146959359, 'icon': '7bcb58b9cd064396bf9fb7820e172227', 'id': '507985032434941983', 'name': 'Test guezmer'},
-        {'owner': False, 'permissions': 2146959089, 'icon': '06332512f21b0d5cfdf752f27394c4eb', 'id': '506586309909807104', 'name': 'Les Anarcho-Weebs'}
-    ]
-
-    return load('dashboard', lang=get_language(), guilds=guilds)
-"""
-
-
 @app.route('/dashboard_<guild_id>')
 def dashboard_server(guild_id):
     if 'user' not in session:
@@ -396,28 +378,6 @@ def get_role_rewards(guild):
     return roles
 
 
-@app.route('/dash_server_test', methods=['GET', 'POST'])
-def dashboard_server_test():
-    lang = get_language()
-
-    guild_id = "424344411468464145"
-    choices = [
-        (1, 1),
-        (2, 2),
-        (3, 3),
-        (4, 4),
-        (5, 5),
-        (6, 6),
-        (7, 7),
-        (8, 8),
-        (9, 9),
-        (10, 10)
-
-    ]
-
-    return load("dashboard_server", lang=lang)
-
-
 @app.route("/form_prefix", methods=['GET', 'POST'])
 def form_prefix():
     post = str(request.args.get('post', 0))
@@ -425,6 +385,8 @@ def form_prefix():
         post = "y!"
     _id = str(request.args.get('_id', 0))
 
+    print(_id+":prefix")
+    print(post)
     db.set(
         _id + ":prefix",
         post
