@@ -460,7 +460,7 @@ def form_bot_master():
 def form_confirm():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
-    if post is True:
+    if str(post) == 1:
         db.delete(
             _id + ":ignore_confirm"
         )
@@ -470,7 +470,7 @@ def form_confirm():
             1
         )
 
-    print("Yuuna ignores the confirmation procedure for guild " + _id + " : " + str(not post))
+    print("Yuuna ignores the confirmation procedure for guild " + _id + " : " + str(1-int(post)))
 
     return json.dumps({'selected post': str(post)})
 
@@ -479,7 +479,7 @@ def form_confirm():
 def form_levels():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
-    if post is False:
+    if str(post) == 0:
         db.delete(
             _id + ":level_enabled"
         )
@@ -539,11 +539,11 @@ def form_message():
 
     if not post:
         db.delete(
-            "levels:message"
+            _id + ":levels:message"
         )
     else:
         db.set(
-            "levels:message",
+            _id + ":levels:message",
             post
         )
 
@@ -556,7 +556,7 @@ def form_message():
 def form_sent():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
-    if post == "true":
+    if str(post) == 1:
         db.delete(
             _id + ":levels:message_disabled"
         )
@@ -575,7 +575,7 @@ def form_sent():
 def form_private():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
-    if post == "true":
+    if str(post) == 1:
         db.delete(
             _id + ":levels:message:private"
         )
