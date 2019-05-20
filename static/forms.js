@@ -50,7 +50,7 @@ let items = [
             'data_func': data_input
         },
         {
-            'info_key': "message_sent",
+            'info_key': "message_disabled",
             'id_name': "message_sent",
             'data_func': data_check
         },
