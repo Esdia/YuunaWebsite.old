@@ -743,13 +743,23 @@ def set_lang(lang):
     if last is None:
         last = "home"
 
-    res = make_response(
-        redirect(
-            url_for(
-                last
+    if last != "dashboard_server":
+        res = make_response(
+            redirect(
+                url_for(
+                    last,
+                )
             )
         )
-    )
+    else:
+        res = make_response(
+            redirect(
+                url_for(
+                    last,
+                    guild_id=session['guild_id']
+                )
+            )
+        )
     res.set_cookie('language', lang, max_age=60 * 60 * 24 * 365)
     return res
 
