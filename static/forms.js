@@ -438,8 +438,6 @@ function add_role_reward() {
         data_select("role"),
         data_input("level")
     ];
-    document.getElementById("role").selectedIndex = 0;
-    document.getElementById("level").value = "";
 
     let x = document.getElementById("role_reward_set_div");
     let div_in = x.children;
@@ -494,6 +492,9 @@ function add_role_reward() {
     div.appendChild(role_set);
     div.appendChild(level_set);
     div.appendChild(button);
+
+    document.getElementById("role").selectedIndex = 0;
+    document.getElementById("level").value = "";
 
     for(let i = 0; i < div_in.length; i++) {
         let lvl = div_in[i].children[1].children[0].innerHTML;
