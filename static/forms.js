@@ -405,7 +405,7 @@ function reward_delete(elem) {
 function add_role_reward() {
     let value = [
         data_select("role"),
-        data_input("level"),
+        data_input("level")
     ];
 
     let x = document.getElementById("role_reward_set_div");
@@ -416,13 +416,13 @@ function add_role_reward() {
 
         for(let j = 0; j < div_in[i].children.length; j++) {
             if(div_in[i].children[j].classList.contains("role_set")) {
-                vals.push(x[i].children[j].children[0].id);
+                vals.push(div_in[i].children[j].children[0].id);
             } else if (div_in[i].children[j].classList.contains("level_set")) {
-                vals.push(x[i].children[j].children[0].innerHTML);
+                vals.push(div_in[i].children[j].children[0].innerHTML);
             }
         }
 
-        if (!check_different(value, vals)) {
+        if (vals[0] === value[0] && vals[1] === value[1]) {
             div_in[i].style.display = "flex";
             return;
         }
