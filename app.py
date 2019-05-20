@@ -432,10 +432,13 @@ def form_autorole():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
 
-    db.set(
-        _id + ":autorole",
-        post
-    )
+    if post != "None":
+        db.set(
+            _id + ":autorole",
+            post
+        )
+    else:
+        db.delete(_id + ":autorole")
     print("Autorole set for guild " + _id + " : " + post)
 
     return json.dumps({'selected post': str(post)})
@@ -446,10 +449,13 @@ def form_bot_master():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
 
-    db.set(
-        _id + ":bot_master",
-        post
-    )
+    if post != "None":
+        db.set(
+            _id + ":bot_master",
+            post
+        )
+    else:
+        db.delete(_id + ":bot_master")
     print("Bot master role set for guild " + _id + " : " + post)
 
     return json.dumps({'selected post': str(post)})

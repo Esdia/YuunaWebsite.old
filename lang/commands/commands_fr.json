@@ -233,158 +233,144 @@
   "command_34": {
     "module": "Système d'XP",
     "module_id": "3",
-    "command": "y!reward set @role [level]",
-    "description": "Configure le role mentionné comme récompense pour avoir atteint le niveau spécifié",
-    "perm": "Gérer le serveur"
+    "command": "y!rewards",
+    "description": "Affiche une liste des roles récompenses",
+    "perm": "Aucune"
   },
   "command_35": {
-    "module": "Système d'XP",
-    "module_id": "3",
-    "command": "y!reward delete @role",
-    "description": "Le role mentionné n'est plus une récompense du système d'XP",
-    "perm": "Gérer le serveur"
-  },
-  "command_36": {
-    "module": "Système d'XP",
-    "module_id": "3",
-    "command": "y!reward list",
-    "description": "Affiche une liste des roles récompenses",
-    "perm": "Gérer le serveur"
-  },
-  "command_37": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!bank",
     "description": "Affiche vos informations bancaires",
     "perm": "Aucune"
   },
-  "command_38": {
+  "command_36": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!bank @member",
     "description": "Affiche les informations bancaires du membre mentionné",
     "perm": "Aucune"
   },
-  "command_39": {
+  "command_37": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!banktop",
     "description": "Affiche une classement des membres les plus riches du serveur",
     "perm": "Aucune"
   },
-  "command_40": {
+  "command_38": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!bank pay @member [n]",
     "description": "Retire n Coins à votre compte, et ajoute n Coins au compte du membre mentionné",
     "perm": "Aucune"
   },
-  "command_41": {
+  "command_39": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!bank add @member [n]",
     "description": "Ajoute n Coins au compte du membre mentionné",
     "perm": "Gérer les messages"
   },
-  "command_42": {
+  "command_40": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!bank remove @member [n]",
     "description": "Retire n Coins au compte du membre mentionné",
     "perm": "Gérer les messages"
   },
-  "command_43": {
+  "command_41": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!bank set @member [n]",
     "description": "Fixe le compte du membre mentionné à n Coins",
     "perm": "Gérer les messages"
   },
-  "command_44": {
+  "command_42": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!shop",
     "description": "Affiche la boutique",
     "perm": "Aucune"
   },
-  "command_45": {
+  "command_43": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!shop add @role [price]",
     "description": "Ajoute un role à la boutique",
     "perm": "Gérer les rôles"
   },
-  "command_46": {
+  "command_44": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!shop remove @role",
     "description": "Retire un role de la boutique",
     "perm": "Gérer les rôles"
   },
-  "command_47": {
+  "command_45": {
     "module": "Banque et boutique",
     "module_id": "4",
     "command": "y!shop set @role [price]",
     "description": "Change le prix d'un role dans la boutique",
     "perm": "Gérer les rôles"
   },
-  "command_48": {
+  "command_46": {
     "module": "Jeux",
     "module_id": "5",
     "command": "y!morpion",
     "description": "Démarre une partie de morpion",
     "perm": "Aucune"
   },
-  "command_49": {
+  "command_47": {
     "module": "Jeux",
     "module_id": "5",
     "command": "y!connect4",
     "description": "Démarre une partie de puissance 4",
     "perm": "Aucune"
   },
-  "command_50": {
+  "command_48": {
     "module": "Jeux",
     "module_id": "5",
     "command": "y!blackjack (alias : y!bj)",
     "description": "Démarre une partie Black Jack",
     "perm": "Aucune"
   },
-  "command_51": {
+  "command_49": {
     "module": "Jeux",
     "module_id": "5",
     "command": "y!chess",
     "description": "Démarre une partie d'Échecs",
     "perm": "Aucune"
   },
-  "command_52": {
+  "command_50": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!purge [n]",
     "description": "Supprime les n derniers messages du salon dans lequel la commande a été tapée",
     "perm": "Gérer les messages"
   },
-  "command_53": {
+  "command_51": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!mute @member",
     "description": "Rend le membre mentionné muet",
     "perm": "Gérer les messages"
   },
-  "command_54": {
+  "command_52": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!unmute @member",
     "description": "Rend la parole au membre mentionné",
     "perm": "Gérer les messages"
   },
-  "command_55": {
+  "command_53": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!kick @member",
     "description": "Expulse le membre mentionné du serveur",
     "perm": "Kick members"
   },
-  "command_56": {
+  "command_54": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!ban @member",

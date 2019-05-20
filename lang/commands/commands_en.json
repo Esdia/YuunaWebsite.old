@@ -233,158 +233,144 @@
   "command_34": {
     "module": "Levelling system",
     "module_id": "3",
-    "command": "y!reward set @role [level]",
-    "description": "Set mentioned role to be a reward for reaching the specified level",
-    "perm": "Manage server"
+    "command": "y!rewards",
+    "description": "Display a list of all the role rewards",
+    "perm": "None"
   },
   "command_35": {
-    "module": "Levelling system",
-    "module_id": "3",
-    "command": "y!reward delete @role",
-    "description": "The mentioned role is no longer a reward for reaching a level",
-    "perm": "Manage server"
-  },
-  "command_36": {
-    "module": "Levelling system",
-    "module_id": "3",
-    "command": "y!reward list",
-    "description": "Display a list of all the role rewards",
-    "perm": "Manage server"
-  },
-  "command_37": {
     "module": "Bank and shop",
     "module_id": "4",
     "command": "y!bank",
     "description": "Show your bank informations",
     "perm": "None"
   },
-  "command_38": {
+  "command_36": {
     "module": "Bank and shop",
     "module_id": "4",
     "command": "y!bank @member",
     "description": "Show the bank information of the mentioned member",
     "perm": "None"
   },
-  "command_39": {
+  "command_37": {
     "module": "Bank and shop",
     "module_id": "4",
     "command": "y!banktop",
     "description": "Display a leaderboard of the richest people of the server",
     "perm": "None"
   },
-  "command_40": {
+  "command_38": {
     "module": "Bank and shop",
     "module_id": "4",
     "command": "y!bank pay @member [n]",
     "description": "Remove n coins to your account, add n coins to the mentioned member's account",
     "perm": "None"
   },
-  "command_41": {
+  "command_39": {
     "module": "Bank and shop",
     "module_id": "4",
     "command": "y!bank add @member [n]",
     "description": "Add n coins to the mentioned member's account",
     "perm": "Manage messages"
   },
-  "command_42": {
+  "command_40": {
     "module": "Bank and shop",
     "module_id": "4",
     "command": "y!bank remove @member [n]",
     "description": "Remove n coins from the mentioned member's account",
     "perm": "Manage messages"
   },
-  "command_43": {
+  "command_41": {
     "module": "Bank and shop",
     "module_id": "4",
     "command": "y!bank set @member [n]",
     "description": "Set the mentioned member's account to n coins",
     "perm": "Manage messages"
   },
-  "command_44": {
+  "command_42": {
     "module": "Bank and shop",
     "module_id": "4",
     "command": "y!shop",
     "description": "Display the shop",
     "perm": "None"
   },
-  "command_45": {
+  "command_43": {
     "module": "Bank and shop",
     "module_id": "4",
     "command": "y!shop add @role [price]",
     "description": "Add a role to the shop",
     "perm": "Manage roles"
   },
-  "command_46": {
+  "command_44": {
     "module": "Bank and shop",
     "module_id": "4",
     "command": "y!shop remove @role",
     "description": "Remove a role from the shop",
     "perm": "Manage roles"
   },
-  "command_47": {
+  "command_45": {
     "module": "Bank and shop",
     "module_id": "4",
     "command": "y!shop set @role [price]",
     "description": "Change a role's price in the shop",
     "perm": "Manage roles"
   },
-  "command_48": {
+  "command_46": {
     "module": "Games",
     "module_id": "5",
     "command": "y!tic-tac-toe (alias : y!ttt)",
     "description": "Launch a game of tic-tac-toe",
     "perm": "None"
   },
-  "command_49": {
+  "command_47": {
     "module": "Games",
     "module_id": "5",
     "command": "y!connect4",
     "description": "Launch a game of Connect4",
     "perm": "None"
   },
-  "command_50": {
+  "command_48": {
     "module": "Games",
     "module_id": "5",
     "command": "y!blackjack (alias : y!bj)",
     "description": "Launch a game of Black Jack",
     "perm": "None"
   },
-  "command_51": {
+  "command_49": {
     "module": "Games",
     "module_id": "5",
     "command": "y!chess",
     "description": "Launch a game of Chess",
     "perm": "None"
   },
-  "command_52": {
+  "command_50": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!purge [n]",
     "description": "Delete the n last messages in the channel the command has been typed in",
     "perm": "Manage messages"
   },
-  "command_53": {
+  "command_51": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!mute @member",
     "description": "Mute the mentioned member",
     "perm": "Manage messages"
   },
-  "command_54": {
+  "command_52": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!unmute @member",
     "description": "Unmute the mentioned member",
     "perm": "Manage messages"
   },
-  "command_55": {
+  "command_53": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!kick @member",
     "description": "Kick the mentioned member from the server",
     "perm": "Kick members"
   },
-  "command_56": {
+  "command_54": {
     "module": "Moderation",
     "module_id": "6",
     "command": "y!ban @member",
