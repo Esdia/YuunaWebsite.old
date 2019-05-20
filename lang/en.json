@@ -111,7 +111,7 @@
   "form.ban_roles": "Ban roles from the levelling system",
   "form.level_up_message": "Level up message",
   "level_up_default_message": "{player}, you leveled up, you are now level {level}.",
-  "form.message_sent": "Disable the level-up message",
+  "form.message_disabled": "Disable the level-up message",
   "form.message_private": "Send the level-up message in private",
   "form.antispam": "Levelling system's antispam",
   "form.bankreward": "Coins won by levelling up",

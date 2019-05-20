@@ -340,8 +340,8 @@ function send_reward() {
     for(let i = 0; i < value.length; i++) {
         def.push(
             {
-                'id': value[0],
-                'level': value[1]
+                'id': value[i][0],
+                'level': value[i][1]
             }
         )
     }

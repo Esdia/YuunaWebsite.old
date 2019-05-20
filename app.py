@@ -574,7 +574,7 @@ def form_sent():
 def form_private():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
-    if int(post) == 1:
+    if int(post) == 0:
         db.delete(
             _id + ":levels:message:private"
         )
