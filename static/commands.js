@@ -2,17 +2,19 @@ let command_list;
 
 function change_module(module) {
     let cmds = document.getElementsByClassName("cmd");
+
+    let root = window.location.href;
     switch (module) {
-        case "#all":
+        case root+"#all":
             for(let i = 0; i < cmds.length; i++) cmds[i].style.display = "unset";
             break;
-        case "#staff":
+        case root+"#staff":
             for(let i = 0; i < cmds.length; i++) {
                 if(command_list[i]['perm'] !== "None") cmds[i].style.display = "unset";
                 else cmds[i].style.display = "none";
             }
             break;
-        case "#non-staff":
+        case root+"#non-staff":
             for(let i = 0; i < cmds.length; i++) {
                 if(command_list[i]['perm'] !== "None") cmds[i].style.display = "none";
                 else cmds[i].style.display = "unset";
@@ -20,7 +22,7 @@ function change_module(module) {
             break;
         default:
             for(let i = 0; i < cmds.length; i++) {
-                if("#"+command_list[i]['module_id'] !== module) cmds[i].style.display = "none";
+                if(root+"#"+command_list[i]['module_id'] !== module) cmds[i].style.display = "none";
                 else cmds[i].style.display = "unset";
             }
             break;
