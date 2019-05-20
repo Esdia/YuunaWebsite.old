@@ -7,6 +7,8 @@
 {% block title %}{{ lang['commands_title'] }}{% endblock %}
 
 {% block body %}
+    <script src="{{ url_for('static', filename='commands.js') }}"></script>
+
     <p>
         {{ lang['commands_intro'] }}
         <a href={{ url_for('features') }}>{{ lang['commands_intro_link'] }}</a>

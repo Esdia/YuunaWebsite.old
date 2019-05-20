@@ -81,10 +81,6 @@ def get_command(command_json, command):
 @app.route('/commands')
 def commands():
     command_list = []
-    if 'module' in session:
-        module = session['module']
-    else:
-        module = "all"
 
     lang = request.cookies.get('language')
     lang = "en" if lang is None else lang
@@ -96,54 +92,24 @@ def commands():
         )
     )
     lang_data = get_language()
-    if module == "staff":
-        for command in command_json:
-            cmd = get_command(command_json, command)
-            if cmd["perm"] != "None":
-                command_list.append(
-                    cmd
-                )
-    elif module == "non-staff":
-        for command in command_json:
-            cmd = get_command(command_json, command)
-            if cmd['perm'] == "None":
-                command_list.append(
-                    cmd
-                )
-    elif module == "all":
-        for command in command_json:
-            command_list.append(
-                get_command(command_json, command)
-            )
-    else:
-        for command in command_json:
-            cmd = get_command(command_json, command)
-            if cmd['module_id'] == str(module):
-                command_list.append(
-                    cmd
-                )
+    for command in command_json:
+        command_list.append(
+            get_command(command_json, command)
+        )
 
     menu = {
-        lang_data['commands_all']: "/commands_all",
-        lang_data['commands_staff']: "/commands_staff",
-        lang_data['commands_non-staff']: "/commands_non-staff",
-        lang_data['commands_misc']: "/commands_1",
-        lang_data['commands_conf']: "/commands_2",
-        lang_data['commands_xp']: "/commands_3",
-        lang_data['commands_bank']: "/commands_4",
-        lang_data['commands_games']: "/commands_5",
-        lang_data['commands_mod']: "/commands_6"
+        lang_data['commands_all']: "#all",
+        lang_data['commands_staff']: "#staff",
+        lang_data['commands_non-staff']: "#non-staff",
+        lang_data['commands_misc']: "#1",
+        lang_data['commands_conf']: "#2",
+        lang_data['commands_xp']: "#3",
+        lang_data['commands_bank']: "#4",
+        lang_data['commands_games']: "#5",
+        lang_data['commands_mod']: "#6"
     }
 
     return load('commands', lang=lang_data, menu=menu, command_list=command_list)
-
-
-@app.route('/commands_<module>')
-def commands_module(module):
-    session['module'] = module
-    return redirect(
-        url_for('commands')
-    )
 
 
 @app.route('/dashboard')
