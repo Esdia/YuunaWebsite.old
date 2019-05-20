@@ -231,124 +231,121 @@ function data_reward(id_name) {
 }
 
 /* This function sends the values to the python app */
-function send_prefix(button) {
-    button.style.display = "none";
+function send_prefix() {
     let value = data_input("prefix");
-    if (value === "") value = "y!";
+    if (value === "") {
+        value = "y!";
+        document.getElementById("prefix").value = value
+    }
     default_infos["prefix"] = value;
 
     send_data("/form_prefix", value);
 }
 
-function send_language(button) {
-    button.style.display = "none";
+function send_language() {
     let value = data_select("language_select");
     default_infos["language_selected"] = value;
 
     send_data("/form_language", value);
 }
 
-function send_disable(button) {
-    button.style.display = "none";
+function send_disable() {
     let value = data_multiple_choice("disable_selected");
     default_infos["disable"] = jQuery.extend([], value);
 
     send_data("/form_disable", value, true);
 }
 
-function send_autorole(button) {
-    button.style.display = "none";
+function send_autorole() {
     let value = data_select("autorole");
     default_infos["autorole"] = value;
 
     send_data("/form_autorole", value);
 }
 
-function send_bot_master(button) {
-    button.style.display = "none";
+function send_bot_master() {
     let value = data_select("bot_master");
     default_infos["bot_master"] = value;
 
     send_data("/form_bot_master", value);
 }
 
-function send_confirm(button) {
-    button.style.display = "none";
+function send_confirm() {
     let value = data_check("confirm");
     default_infos["confirm"] = value;
 
     send_data("/form_confirm", value);
 }
 
-function send_levels(button) {
-    button.style.display = "none";
+function send_levels() {
     let value = data_check("levels");
     default_infos["levels"] = value;
 
     send_data("/form_levels", value)
 }
 
-function send_ban_channels(button) {
-    button.style.display = "none";
+function send_ban_channels() {
     let value = data_multiple_choice("ban_channels_selected");
     default_infos["ban_channels"] = jQuery.extend([], value);
 
     send_data("/form_ban_channels", value, true);
 }
 
-function send_ban_roles(button) {
-    button.style.display = "none";
+function send_ban_roles() {
     let value = data_multiple_choice("ban_roles_selected");
     default_infos["ban_roles"] = jQuery.extend([], value);
 
     send_data("/form_ban_roles", value, true);
 }
 
-function send_level_up_message(button) {
-    button.style.display = "none";
+function send_level_up_message() {
     let value = data_input("level_up_message");
-    if (value === "") default_infos["message"] = default_infos["default_message"];
+    if (value === "") {
+        default_infos["message"] = default_infos["default_message"];
+        document.getElementById("level_up_message").value = default_infos["message"];
+    }
     else default_infos["message"] = value;
 
     send_data("/form_message", value);
 }
 
-function send_message_disabled(button) {
-    button.style.display = "none";
+function send_message_disabled() {
     let value = data_check("message_disabled");
     default_infos["message_disabled"] = value;
 
     send_data("/form_sent", value);
 }
 
-function send_message_private(button) {
-    button.style.display = "none";
+function send_message_private() {
     let value = data_check("message_private");
     default_infos["message_private"] = value;
 
     send_data("/form_private", value);
 }
 
-function send_antispam(button) {
-    button.style.display = "none";
+function send_antispam() {
     let value = data_input("antispam");
-    if (value === "") value = "60";
+    if (value === "") {
+        value = "60";
+        document.getElementById("antispam").value = value;
+    }
     default_infos["antispam"] = value;
 
     send_data("/form_antispam", value);
 }
 
-function send_bankreward(button) {
-    button.style.display = "none";
+function send_bankreward() {
     let value = data_input("bankreward");
-    if (value === "") value = "60";
+    if (value === "") {
+        value = "50";
+        document.getElementById("bankreward").value = value;
+    }
     default_infos["bankreward"] = value;
 
     send_data("/form_bankreward", value);
 }
 
-function send_reward(button) {
-    button.style.display = "none";
+function send_reward() {
     let value = data_reward("role_reward_set_div");
 
     let def = [];
