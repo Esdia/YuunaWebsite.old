@@ -8,6 +8,9 @@
 
 {% block body %}
     <script src="{{ url_for('static', filename='commands.js') }}"></script>
+    <script>
+        set_event({{ command_list }})
+    </script>
 
     <p>
         {{ lang['commands_intro'] }}
