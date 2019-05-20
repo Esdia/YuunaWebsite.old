@@ -492,5 +492,14 @@ function add_role_reward() {
     div.appendChild(role_set);
     div.appendChild(level_set);
     div.appendChild(button);
+
+    for(let i = 0; i < div_in.length; i++) {
+        let lvl = div_in[i].children[1].children[0].innerHTML;
+        if (+value[1] <= +lvl) {
+            x.insertBefore(div, div_in[i]);
+            return;
+        }
+    }
+
     x.appendChild(div);
 }
