@@ -438,6 +438,8 @@ function add_role_reward() {
         data_select("role"),
         data_input("level")
     ];
+    document.getElementById("role").selectedIndex = 0;
+    document.getElementById("level").value = "";
 
     let x = document.getElementById("role_reward_set_div");
     let div_in = x.children;
