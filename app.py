@@ -262,11 +262,11 @@ def dashboard_server(guild_id):
     if message is None:
         message = lang['level_up_default_message']
 
-    message_sent = db.get(key + "levels:message_disabled")
-    message_sent = int(message_sent is None)
+    message_disabled = db.get(key + "levels:message_disabled")
+    message_disabled = int(message_disabled is not None)
 
     message_private = db.get(key + "levels:message:private")
-    message_private = int(message_private is None)
+    message_private = int(message_private is not None)
 
     antispam = db.get(key + 'xp_antispam')
     antispam = "60" if antispam is None else str(antispam)
@@ -292,7 +292,7 @@ def dashboard_server(guild_id):
         'roles': roles,
         'ban_roles': ban_roles,
         'message': message,
-        'message_sent': message_sent,
+        'message_disabled': message_disabled,
         'message_private': message_private,
         'antispam': antispam,
         'bankreward': bankreward,

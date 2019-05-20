@@ -213,7 +213,7 @@
             <div>
                 <label for="message_sent">{{ lang["form.message_sent"] }}</label>
                 <label class="switch">
-                    <input type="checkbox" id="message_sent" {% if not infos['message_sent'] %} checked {% endif %}/>
+                    <input type="checkbox" id="message_sent" {% if infos['message_disabled'] %} checked {% endif %}/>
                     <span class="slider"></span>
                 </label>
             </div>
@@ -230,7 +230,7 @@
             <div>
                 <label for="message_private">{{ lang["form.message_private"] }}</label>
                 <label class="switch">
-                    <input type="checkbox" id="message_private" {% if not infos['message_private'] %} checked {% endif %}/>
+                    <input type="checkbox" id="message_private" {% if infos['message_private'] %} checked {% endif %}/>
                     <span class="slider"></span>
                 </label>
             </div>
