@@ -39,7 +39,7 @@ function set_event(cmd_list) {
 
         elem.onclick = (
             function () {
-                let href = elem..href;
+                let href = elem.href;
                 return change_module(href);
             }
         );
