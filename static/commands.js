@@ -41,7 +41,5 @@ function set_event(cmd_list) {
                 return change_module(href);
             }
         );
-
-        elem.onclick = (elem) => change_module(elem.children[0].href)
     }
 }
