@@ -25,6 +25,7 @@ function change_module(module) {
             }
             break;
     }
+    return false;
 }
 
 function set_event(cmd_list) {
@@ -33,6 +34,13 @@ function set_event(cmd_list) {
 
     for(let i = 0; i < menu.children.length; i++) {
         let elem = menu.children[i];
+
+        elem.onclick = (
+            function () {
+                let href = elem.children[0].href;
+                return change_module(href);
+            }
+        );
 
         elem.onclick = (elem) => change_module(elem.children[0].href)
     }
