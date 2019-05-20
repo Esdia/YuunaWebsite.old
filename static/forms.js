@@ -149,7 +149,12 @@ function check_reward_syntax() {
 
     let x = document.getElementById("add_reward_button");
     if(value[0] !== "None" && !isNaN(value[1]) && 0 < +value[1] && +value[1] <= 100) {
-        x.style.display = "unset";
+        let value_set = data_reward("role_reward_set_div");
+        let display = value_set.every(
+            (val) => val[0] !== value[0] && val[1] !== value[1]
+        );
+
+        if (display) x.style.display = "unset";
     } else {
         x.style.display = "none";
     }
