@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="button_div">
-            <button id="prefix_button" onclick="send_prefix()">{{ lang['form.submit'] }}</button>
+            <button id="prefix_button" onclick="send_prefix(this)">{{ lang['form.submit'] }}</button>
         </div>
     </div>
 
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="button_div">
-            <button id="language_selected_button" onclick="send_language()">{{ lang['form.submit'] }}</button>
+            <button id="language_selected_button" onclick="send_language(this)">{{ lang['form.submit'] }}</button>
         </div>
     </div>
 
@@ -66,7 +66,7 @@
             {% endfor %}
         </div>
         <div class="button_div">
-            <button id="disable_button" onclick="send_disable()">{{ lang["form.submit"] }}</button>
+            <button id="disable_button" onclick="send_disable(this)">{{ lang["form.submit"] }}</button>
         </div>
     </div>
 
@@ -85,7 +85,7 @@
             </div>
         </div>
         <div class="button_div">
-            <button id="autorole_button" onclick="send_autorole()">{{ lang['form.submit'] }}</button>
+            <button id="autorole_button" onclick="send_autorole(this)">{{ lang['form.submit'] }}</button>
         </div>
     </div>
 
@@ -104,7 +104,7 @@
             </div>
         </div>
         <div class="button_div">
-           <button id="bot_master_button" onclick="send_bot_master()">{{ lang['form.submit'] }}</button>
+           <button id="bot_master_button" onclick="send_bot_master(this)">{{ lang['form.submit'] }}</button>
         </div>
     </div>
 
@@ -121,7 +121,7 @@
             </div>
         </div>
         <div class="button_div">
-            <button id="confirm_button" onclick="send_confirm()">{{ lang["form.submit"] }}</button>
+            <button id="confirm_button" onclick="send_confirm(this)">{{ lang["form.submit"] }}</button>
         </div>
     </div>
 
@@ -138,7 +138,7 @@
             </div>
         </div>
         <div class="button_div">
-            <button id="levels_button" onclick="send_levels()">{{ lang["form.submit"] }}</button>
+            <button id="levels_button" onclick="send_levels(this)">{{ lang["form.submit"] }}</button>
         </div>
     </div>
 
@@ -163,7 +163,7 @@
             {% endfor %}
         </div>
         <div class="button_div">
-            <button id="ban_channels_button" onclick="send_ban_channels()">{{ lang["form.submit"] }}</button>
+            <button id="ban_channels_button" onclick="send_ban_channels(this)">{{ lang["form.submit"] }}</button>
         </div>
     </div>
 
@@ -188,7 +188,7 @@
             {% endfor %}
         </div>
         <div class="button_div">
-            <button id="ban_roles_button" onclick="send_ban_roles()">{{ lang["form.submit"] }}</button>
+            <button id="ban_roles_button" onclick="send_ban_roles(this)">{{ lang["form.submit"] }}</button>
         </div>
     </div>
 
@@ -202,7 +202,7 @@
             </div>
         </div>
         <div class="button_div">
-            <button id="message_button" onclick="send_level_up_message()">{{ lang["form.submit"] }}</button>
+            <button id="message_button" onclick="send_level_up_message(this)">{{ lang["form.submit"] }}</button>
         </div>
     </div>
 
@@ -219,7 +219,7 @@
             </div>
         </div>
         <div class="button_div">
-            <button id="message_disabled_button" onclick="send_message_disabled()">{{ lang["form.submit"] }}</button>
+            <button id="message_disabled_button" onclick="send_message_disabled(this)">{{ lang["form.submit"] }}</button>
         </div>
     </div>
 
@@ -236,7 +236,7 @@
             </div>
         </div>
         <div class="button_div">
-            <button id="message_private_button" onclick="send_message_private()">{{ lang["form.submit"] }}</button>
+            <button id="message_private_button" onclick="send_message_private(this)">{{ lang["form.submit"] }}</button>
         </div>
     </div>
 
@@ -246,11 +246,11 @@
         <div class="form_in">
             <div>
                 <label for="antispam">{{ lang["form.antispam"] }}</label>
-                <input type="number" id="antispam" value={{ infos['antispam'] }} min="0">
+                <input type="number" id="antispam" value={{ infos['antispam'] }} min="0" placeholder="60" >
             </div>
         </div>
         <div class="button_div">
-            <button id="antispam_button" onclick="send_antispam()">{{ lang["form.submit"] }}</button>
+            <button id="antispam_button" onclick="send_antispam(this)">{{ lang["form.submit"] }}</button>
         </div>
     </div>
 
@@ -260,11 +260,11 @@
         <div class="form_in">
             <div>
                 <label for="bankreward">{{ lang["form.bankreward"] }}</label>
-                <input type="number" id="bankreward" value={{ infos['bankreward'] }} min="0">
+                <input type="number" id="bankreward" value={{ infos['bankreward'] }} min="0" placeholder="50" >
             </div>
         </div>
         <div class="button_div">
-            <button id="bankreward_button" onclick="send_bankreward()">{{ lang["form.submit"] }}</button>
+            <button id="bankreward_button" onclick="send_bankreward(this)">{{ lang["form.submit"] }}</button>
         </div>
     </div>
 
@@ -290,7 +290,7 @@
             </div>
         </div>
         <div class="button_div">
-            <button id="role_rewards_button" onclick="send_reward()">{{ lang["form.submit"] }}</button>
+            <button id="role_rewards_button" onclick="send_reward(this)">{{ lang["form.submit"] }}</button>
             <button id="add_reward_button" onclick="add_role_reward()">{{ lang["form.add"] }}</button>
         </div>
     </div>

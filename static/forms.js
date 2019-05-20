@@ -230,8 +230,9 @@ function data_reward(id_name) {
     return values;
 }
 
-/* This function sends the values to the python app*/
-function send_prefix() {
+/* This function sends the values to the python app */
+function send_prefix(button) {
+    button.style.display = "none";
     let value = data_input("prefix");
     if (value === "") value = "y!";
     default_infos["prefix"] = value;
@@ -239,63 +240,72 @@ function send_prefix() {
     send_data("/form_prefix", value);
 }
 
-function send_language() {
+function send_language(button) {
+    button.style.display = "none";
     let value = data_select("language_select");
     default_infos["language_selected"] = value;
 
     send_data("/form_language", value);
 }
 
-function send_disable() {
+function send_disable(button) {
+    button.style.display = "none";
     let value = data_multiple_choice("disable_selected");
     default_infos["disable"] = jQuery.extend([], value);
 
     send_data("/form_disable", value, true);
 }
 
-function send_autorole() {
+function send_autorole(button) {
+    button.style.display = "none";
     let value = data_select("autorole");
     default_infos["autorole"] = value;
 
     send_data("/form_autorole", value);
 }
 
-function send_bot_master() {
+function send_bot_master(button) {
+    button.style.display = "none";
     let value = data_select("bot_master");
     default_infos["bot_master"] = value;
 
     send_data("/form_bot_master", value);
 }
 
-function send_confirm() {
+function send_confirm(button) {
+    button.style.display = "none";
     let value = data_check("confirm");
     default_infos["confirm"] = value;
 
     send_data("/form_confirm", value);
 }
 
-function send_levels() {
+function send_levels(button) {
+    button.style.display = "none";
     let value = data_check("levels");
     default_infos["levels"] = value;
 
     send_data("/form_levels", value)
 }
 
-function send_ban_channels() {
+function send_ban_channels(button) {
+    button.style.display = "none";
     let value = data_multiple_choice("ban_channels_selected");
     default_infos["ban_channels"] = jQuery.extend([], value);
 
     send_data("/form_ban_channels", value, true);
 }
 
-function send_ban_roles() {
+function send_ban_roles(button) {
+    button.style.display = "none";
     let value = data_multiple_choice("ban_roles_selected");
     default_infos["ban_roles"] = jQuery.extend([], value);
 
     send_data("/form_ban_roles", value, true);
 }
 
-function send_level_up_message() {
+function send_level_up_message(button) {
+    button.style.display = "none";
     let value = data_input("level_up_message");
     if (value === "") default_infos["message"] = default_infos["default_message"];
     else default_infos["message"] = value;
@@ -303,21 +313,24 @@ function send_level_up_message() {
     send_data("/form_message", value);
 }
 
-function send_message_disabled() {
+function send_message_disabled(button) {
+    button.style.display = "none";
     let value = data_check("message_disabled");
     default_infos["message_disabled"] = value;
 
     send_data("/form_sent", value);
 }
 
-function send_message_private() {
+function send_message_private(button) {
+    button.style.display = "none";
     let value = data_check("message_private");
     default_infos["message_private"] = value;
 
     send_data("/form_private", value);
 }
 
-function send_antispam() {
+function send_antispam(button) {
+    button.style.display = "none";
     let value = data_input("antispam");
     if (value === "") value = "60";
     default_infos["antispam"] = value;
@@ -325,7 +338,8 @@ function send_antispam() {
     send_data("/form_antispam", value);
 }
 
-function send_bankreward() {
+function send_bankreward(button) {
+    button.style.display = "none";
     let value = data_input("bankreward");
     if (value === "") value = "60";
     default_infos["bankreward"] = value;
@@ -333,7 +347,8 @@ function send_bankreward() {
     send_data("/form_bankreward", value);
 }
 
-function send_reward() {
+function send_reward(button) {
+    button.style.display = "none";
     let value = data_reward("role_reward_set_div");
 
     let def = [];
