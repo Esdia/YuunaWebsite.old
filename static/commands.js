@@ -6,24 +6,24 @@ function change_module(module) {
     let root = window.location.href;
     switch (module) {
         case root+"#all":
-            for(let i = 0; i < cmds.length; i++) cmds[i].style.display = "unset";
+            for(let i = 0; i < cmds.length; i++) cmds[i].style.display = "block";
             break;
         case root+"#staff":
             for(let i = 0; i < cmds.length; i++) {
-                if(command_list[i]['perm'] !== "None") cmds[i].style.display = "unset";
+                if(command_list[i]['perm'] !== "None") cmds[i].style.display = "block";
                 else cmds[i].style.display = "none";
             }
             break;
         case root+"#non-staff":
             for(let i = 0; i < cmds.length; i++) {
                 if(command_list[i]['perm'] !== "None") cmds[i].style.display = "none";
-                else cmds[i].style.display = "unset";
+                else cmds[i].style.display = "block";
             }
             break;
         default:
             for(let i = 0; i < cmds.length; i++) {
                 if(root+"#"+command_list[i]['module_id'] !== module) cmds[i].style.display = "none";
-                else cmds[i].style.display = "unset";
+                else cmds[i].style.display = "block";
             }
             break;
     }
