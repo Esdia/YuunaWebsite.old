@@ -35,11 +35,11 @@ function set_event(cmd_list) {
     let menu = document.getElementById("side_menu_ul");
 
     for(let i = 0; i < menu.children.length; i++) {
-        let elem = menu.children[i];
+        let elem = menu.children[i].children[0];
 
         elem.onclick = (
             function () {
-                let href = elem.children[0].href;
+                let href = elem..href;
                 return change_module(href);
             }
         );
