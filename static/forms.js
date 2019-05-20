@@ -408,6 +408,24 @@ function add_role_reward() {
     ];
 
     let x = document.getElementById("role_reward_set_div");
+    let div_in = x.children;
+
+    for(let i = 0; i < div_in.length; i++) {
+        let vals = [];
+
+        for(let j = 0; j < div_in[i].children.length; j++) {
+            if(x[i].children[j].classList.contains("role_set")) {
+                vals.push(x[i].children[j].children[0].id);
+            } else if (x[i].children[j].classList.contains("level_set")) {
+                vals.push(x[i].children[j].children[0].innerHTML);
+            }
+        }
+
+        if (!check_different(value, vals)) {
+            div_in[i].style.display = "flex";
+            return;
+        }
+    }
 
     let div = document.createElement("DIV");
     div.classList.add("role_reward_set_div_in");
