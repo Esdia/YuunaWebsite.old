@@ -151,10 +151,11 @@ function check_reward_syntax() {
     if(value[0] !== "None" && !isNaN(value[1]) && 0 < +value[1] && +value[1] <= 100) {
         let value_set = data_reward("role_reward_set_div");
         let display = value_set.every(
-            (val) => val[0] !== value[0] && val[1] !== value[1]
+            (val) => val[0] !== value[0] || val[1] !== value[1]
         );
 
         if (display) x.style.display = "unset";
+        else x.style.display = "none";
     } else {
         x.style.display = "none";
     }
@@ -414,9 +415,9 @@ function add_role_reward() {
         let vals = [];
 
         for(let j = 0; j < div_in[i].children.length; j++) {
-            if(x[i].children[j].classList.contains("role_set")) {
+            if(div_in[i].children[j].classList.contains("role_set")) {
                 vals.push(x[i].children[j].children[0].id);
-            } else if (x[i].children[j].classList.contains("level_set")) {
+            } else if (div_in[i].children[j].classList.contains("level_set")) {
                 vals.push(x[i].children[j].children[0].innerHTML);
             }
         }
