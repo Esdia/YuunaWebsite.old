@@ -1,3 +1,4 @@
+let default_infos;
 let items = [
         {
             'info_key': "prefix",
@@ -109,7 +110,7 @@ function different_reward(value, _default) {
     return !valInDefault || !defaultInVal;
 }
 
-function check_default(default_infos) {
+function check_default() {
     for(let i = 0; i < items.length; i++) {
         let id_name = items[i]['id_name'];
         let value = items[i]['data_func'](id_name);
@@ -232,6 +233,7 @@ function data_reward(id_name) {
 /* This function sends the values to the python app*/
 function send_prefix() {
     let value = data_input("prefix");
+    default_infos["prefix"] = value;
 
     send_data("/form_prefix", value);
 }
@@ -358,14 +360,15 @@ window.onclick = function(event) {
     }
 };
 
-function click_key_event(infos) {
-    check_default(infos);
+function click_key_event() {
+    check_default();
     check_reward_syntax();
 }
 
 function set_event(infos) {
-    document.body.onclick = () => click_key_event(infos);
-    document.body.onkeyup = () => click_key_event(infos);
+    default_infos = infos;
+    document.body.onclick = () => click_key_event();
+    document.body.onkeyup = () => click_key_event();
 }
 
 /* This functions selects a value in the multiple choices fields */
