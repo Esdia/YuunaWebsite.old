@@ -756,7 +756,7 @@ def set_lang(lang):
             redirect(
                 url_for(
                     last,
-                    guild_id=session['guild_id']
+                    guild_id=session['GUILD_ID']
                 )
             )
         )
