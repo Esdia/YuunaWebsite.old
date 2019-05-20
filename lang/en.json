@@ -113,7 +113,7 @@
   "level_up_default_message": "{player}, you leveled up, you are now level {level}.",
   "form.message_disabled": "Disable the level-up message",
   "form.message_private": "Send the level-up message in private",
-  "form.antispam": "Levelling system's antispam",
+  "form.antispam": "Levelling system's antispam (in seconds)",
   "form.bankreward": "Coins won by levelling up",
   "form.role_reward.role": "Role reward",
   "form.role_reward.level": "Level",
