@@ -208,18 +208,18 @@
 
     <div class="separator"></div>
 
-    <div class="form" id="message_sent_div">
+    <div class="form" id="message_disabled_div">
         <div class="form_in">
             <div>
-                <label for="message_sent">{{ lang["form.message_sent"] }}</label>
+                <label for="message_disabled">{{ lang["form.message_disabled"] }}</label>
                 <label class="switch">
-                    <input type="checkbox" id="message_sent" {% if infos['message_disabled'] %} checked {% endif %}/>
+                    <input type="checkbox" id="message_disabled" {% if infos['message_disabled'] %} checked {% endif %}/>
                     <span class="slider"></span>
                 </label>
             </div>
         </div>
         <div class="button_div">
-            <button id="message_disabled_button" onclick="send_message_sent()">{{ lang["form.submit"] }}</button>
+            <button id="message_disabled_button" onclick="send_message_disabled()">{{ lang["form.submit"] }}</button>
         </div>
     </div>
 

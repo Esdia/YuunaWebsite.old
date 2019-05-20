@@ -52,7 +52,7 @@ let items = [
         },
         {
             'info_key': "message_disabled",
-            'id_name': "message_sent",
+            'id_name': "message_disabled",
             'data_func': data_check
         },
         {
@@ -233,6 +233,7 @@ function data_reward(id_name) {
 /* This function sends the values to the python app*/
 function send_prefix() {
     let value = data_input("prefix");
+    if (value === "") value = "y!";
     default_infos["prefix"] = value;
 
     send_data("/form_prefix", value);
@@ -240,84 +241,111 @@ function send_prefix() {
 
 function send_language() {
     let value = data_select("language_select");
+    default_infos["language_selected"] = value;
 
     send_data("/form_language", value);
 }
 
 function send_disable() {
     let value = data_multiple_choice("disable_selected");
+    default_infos["disable"] = jQuery.extend([], value);
 
     send_data("/form_disable", value, true);
 }
 
 function send_autorole() {
     let value = data_select("autorole");
+    default_infos["autorole"] = value;
 
     send_data("/form_autorole", value);
 }
 
 function send_bot_master() {
     let value = data_select("bot_master");
+    default_infos["bot_master"] = value;
 
     send_data("/form_bot_master", value);
 }
 
 function send_confirm() {
     let value = data_check("confirm");
+    default_infos["confirm"] = value;
 
     send_data("/form_confirm", value);
 }
 
 function send_levels() {
     let value = data_check("levels");
+    default_infos["levels"] = value;
 
     send_data("/form_levels", value)
 }
 
 function send_ban_channels() {
     let value = data_multiple_choice("ban_channels_selected");
+    default_infos["ban_channels"] = jQuery.extend([], value);
 
     send_data("/form_ban_channels", value, true);
 }
 
 function send_ban_roles() {
     let value = data_multiple_choice("ban_roles_selected");
+    default_infos["ban_roles"] = jQuery.extend([], value);
 
     send_data("/form_ban_roles", value, true);
 }
 
 function send_level_up_message() {
     let value = data_input("level_up_message");
+    if (value === "") default_infos["message"] = default_infos["default_message"];
+    else default_infos["message"] = value;
 
     send_data("/form_message", value);
 }
 
-function send_message_sent() {
-    let value = data_check("message_sent");
+function send_message_disabled() {
+    let value = data_check("message_disabled");
+    default_infos["message_disabled"] = value;
 
     send_data("/form_sent", value);
 }
 
 function send_message_private() {
     let value = data_check("message_private");
+    default_infos["message_private"] = value;
 
     send_data("/form_private", value);
 }
 
 function send_antispam() {
     let value = data_input("antispam");
+    if (value === "") value = "60";
+    default_infos["antispam"] = value;
 
     send_data("/form_antispam", value);
 }
 
 function send_bankreward() {
     let value = data_input("bankreward");
+    if (value === "") value = "60";
+    default_infos["bankreward"] = value;
 
     send_data("/form_bankreward", value);
 }
 
 function send_reward() {
     let value = data_reward("role_reward_set_div");
+
+    let def = [];
+    for(let i = 0; i < value.length; i++) {
+        def.push(
+            {
+                'id': value[0],
+                'level': value[1]
+            }
+        )
+    }
+    default_infos["role_rewards"] = def;
 
     send_data("/form_role_reward", value, true);
 }

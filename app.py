@@ -292,6 +292,7 @@ def dashboard_server(guild_id):
         'roles': roles,
         'ban_roles': ban_roles,
         'message': message,
+        'default_message': lang["level_up_default_message"],
         'message_disabled': message_disabled,
         'message_private': message_private,
         'antispam': antispam,
@@ -383,8 +384,6 @@ def get_role_rewards(guild):
 @app.route("/form_prefix", methods=['GET', 'POST'])
 def form_prefix():
     post = str(request.args.get('post', 0))
-    if post == "":
-        post = "y!"
     _id = session['GUILD_ID']
     db.set(
         _id + ":prefix",
@@ -556,7 +555,7 @@ def form_message():
 def form_sent():
     post = request.args.get('post', 0)
     _id = session['GUILD_ID']
-    if int(post) == 1:
+    if int(post) == 0:
         db.delete(
             _id + ":levels:message_disabled"
         )
@@ -593,8 +592,6 @@ def form_private():
 @app.route("/form_antispam", methods=['GET', 'POST'])
 def form_antispam():
     post = str(request.args.get('post', 0))
-    if post == "":
-        post = "60"
     _id = session['GUILD_ID']
 
     db.set(
@@ -609,8 +606,6 @@ def form_antispam():
 @app.route("/form_bankreward", methods=['GET', 'POST'])
 def form_bankreward():
     post = str(request.args.get('post', 0))
-    if post == "":
-        post = "50"
     _id = session['GUILD_ID']
 
     db.set(
