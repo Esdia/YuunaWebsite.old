@@ -219,7 +219,7 @@ def dashboard_server(guild_id):
         command_list.remove("bj")
         command_list.remove("ttt")
         command_list.remove("morpion")
-        command_list = list(command_list)
+        command_list = sorted(list(command_list))
     disable = db.smembers(key + "disabled_commands")
     if disable is None:
         disable = []
@@ -354,7 +354,7 @@ def get_roles(guild):
             'id': role['id'],
             'name': role['name'],
             'color': role['color']
-        } for role in guild['roles']
+        } for role in guild['roles'] if (not role['managed'] and role["name"] != "@everyone")
     ]
     return roles
 
