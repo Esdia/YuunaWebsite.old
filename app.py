@@ -201,8 +201,10 @@ def dashboard_server(guild_id):
         disable = list(disable)
 
     autorole = db.get(key + 'autorole')
+    autorole = "None" if autorole is None else str(autorole)
 
     bot_master = db.get(key + 'bot_master')
+    bot_master = "None" if bot_master is None else str(bot_master)
 
     confirm = db.get(key + 'ignore_confirm')
     confirm = int(confirm is None)
